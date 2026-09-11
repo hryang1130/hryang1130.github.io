@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-page-node-id="JFohHA4dBIZbN1iwxqZeHq">
-<head data-page-node-id="hz2ECuW7lbJz7rUfGkBdqU">
-<meta charset="UTF-8" data-page-node-id="x1uiJNYraDkZAx385jlXa6">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="47bOR6GMPJACmjOja0G85f">
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>杨浩然 | Haoran Yang</title>
-<meta name="description" content="杨浩然 - AI 算法 / 软件开发. 香港大学人工智能硕士在读, 自动驾驶模型后训练与数据挖掘. C++ / Go / Python." data-page-node-id="LCI0VNgT2hjIz36RpuOVa1">
+<meta name="description" content="杨浩然 - AI 算法 / 软件开发. 香港大学人工智能硕士在读, 自动驾驶模型后训练与数据挖掘. C++ / Go / Python.">
 <style>
   :root {
-    --text: #1f2328;
+    --text: #16181d;
+    --body: #3f4653;
     --muted: #6b7280;
     --faint: #9ca3af;
-    --line: #e8eaed;
-    --accent: #2f5fd0;
+    --line: #e6e8ee;
+    --accent: #4f46e5;
+    --tint: #eef2ff;
     --bg: #ffffff;
+    --mono: ui-monospace, "SF Mono", "Cascadia Mono", "JetBrains Mono", Consolas, "Courier New", monospace;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
       "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
@@ -24,9 +28,13 @@
     font-size: 15px;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    border-top: 3px solid var(--accent);
   }
+  ::selection { background: #e0e7ff; }
   a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 26px; }
 
   /* ===== 顶部条 ===== */
   .topbar {
@@ -36,18 +44,19 @@
     border-bottom: 1px solid var(--line);
   }
   .topbar-inner {
-    max-width: 720px; margin: 0 auto;
-    padding: 14px 26px;
+    max-width: 780px; margin: 0 auto;
+    padding: 13px 26px;
     display: flex; align-items: center; justify-content: space-between;
   }
-  .topbar-name { font-size: 13.5px; font-weight: 600; letter-spacing: .05em; }
+  .topbar-name { font-family: var(--mono); font-size: 13px; letter-spacing: .06em; }
+  .topbar-name .slash { color: var(--accent); }
   .lang-btn {
     background: none;
     border: 1px solid var(--line);
     border-radius: 6px;
     color: var(--muted);
+    font-family: var(--mono);
     font-size: 12.5px;
-    font-family: inherit;
     letter-spacing: .04em;
     padding: 3px 12px;
     cursor: pointer;
@@ -55,60 +64,142 @@
   }
   .lang-btn:hover { color: var(--accent); border-color: #c7d2fe; }
 
-  .wrap { max-width: 720px; margin: 0 auto; padding: 0 26px 64px; }
-
-  /* ===== 个人信息 ===== */
-  .profile {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 44px 0 32px;
+  /* ===== Hero ===== */
+  .hero { position: relative; }
+  .hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: radial-gradient(#dfe4ee 1px, transparent 1.4px);
+    background-size: 20px 20px;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.85), transparent 88%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,.85), transparent 88%);
+    pointer-events: none;
   }
+  .hero-grid {
+    position: relative;
+    display: flex; align-items: center; gap: 34px;
+    padding-top: 52px; padding-bottom: 40px;
+  }
+  .hero-text { flex: 1; min-width: 0; }
+  .kicker {
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: .24em;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  h1 { font-size: 38px; font-weight: 750; letter-spacing: -.01em; line-height: 1.2; }
+  h1 .latin {
+    font-family: var(--mono);
+    font-size: 15px; font-weight: 400;
+    color: var(--faint);
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+  .lead {
+    margin-top: 14px;
+    font-size: 16px;
+    color: var(--body);
+    max-width: 34em;
+  }
+  .now {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 18px;
+    background: var(--tint);
+    border: 1px solid #e0e7ff;
+    border-radius: 999px;
+    padding: 5px 14px;
+    font-size: 13.5px;
+    color: #3730a3;
+  }
+  .now .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px rgba(79,70,229,.15);
+  }
+  .stack { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
+  .stack span {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 2px 9px;
+    background: rgba(255,255,255,.7);
+  }
+  .contact {
+    margin-top: 20px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    display: flex; flex-wrap: wrap; align-items: center;
+  }
+  .contact > * + *::before { content: "·"; color: #d1d5db; margin: 0 9px; }
+  .cv {
+    display: inline-block;
+    margin-top: 22px;
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: .04em;
+    color: var(--text);
+    border: 1px solid #cfd4de;
+    border-radius: 8px;
+    padding: 8px 18px;
+    background: rgba(255,255,255,.8);
+    transition: color .15s, border-color .15s, background .15s;
+  }
+  .cv:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; }
   .avatar {
-    width: 88px; height: 88px;
-    border-radius: 50%;
+    width: 124px; height: 124px;
+    border-radius: 32px;
     object-fit: cover;
     flex-shrink: 0;
     border: 1px solid var(--line);
-  }
-  .profile h1 { font-size: 25px; font-weight: 650; letter-spacing: .01em; line-height: 1.35; }
-  .profile .role { color: var(--muted); font-size: 14.5px; margin-top: 1px; }
-  .contact {
-    margin-top: 10px;
-    color: var(--muted);
-    font-size: 13.5px;
-    display: flex; flex-wrap: wrap; align-items: center;
-  }
-  .contact > * + *::before {
-    content: "·";
-    color: #d1d5db;
-    margin: 0 9px;
+    box-shadow: 0 8px 24px rgba(22,24,29,.10);
   }
 
-  /* ===== 区块标题 ===== */
-  section { padding-top: 44px; }
+  /* ===== 区块 ===== */
+  main { padding-bottom: 56px; }
+  section { padding-top: 46px; }
   h2 {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: var(--faint);
+    display: flex; align-items: baseline; gap: 12px;
+    font-size: 12px; font-weight: 600;
+    letter-spacing: .18em; text-transform: uppercase;
+    color: var(--muted);
     padding-bottom: 10px;
     border-bottom: 1px solid var(--line);
     margin-bottom: 22px;
   }
+  h2 .num { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--accent); }
 
   /* ===== 条目：左时间 + 右内容 ===== */
   .entry {
+    position: relative;
     display: grid;
-    grid-template-columns: 132px 1fr;
+    grid-template-columns: 138px 1fr;
     gap: 24px;
-    padding-bottom: 24px;
+    padding-bottom: 25px;
   }
   .entry:last-child { padding-bottom: 0; }
-  .entry + .entry { border-top: 1px solid var(--line); padding-top: 24px; }
-  .when { color: var(--faint); font-size: 13px; padding-top: 2px; }
-  .entry h3 { font-size: 15px; font-weight: 650; line-height: 1.55; }
+  .entry + .entry { border-top: 1px solid var(--line); padding-top: 25px; }
+  .entry::before {
+    content: "";
+    position: absolute; left: -14px; top: 8px; bottom: 8px;
+    width: 2px; border-radius: 2px;
+    background: var(--accent);
+    opacity: 0;
+    transition: opacity .18s;
+  }
+  .entry:hover::before { opacity: .8; }
+  .when {
+    font-family: var(--mono);
+    color: var(--faint);
+    font-size: 12.5px;
+    letter-spacing: .02em;
+    padding-top: 3px;
+    transition: color .18s;
+  }
+  .entry:hover .when { color: var(--accent); }
+  .entry h3 { font-size: 15.5px; font-weight: 650; line-height: 1.55; }
   .entry h3 .role-text { font-weight: 400; color: var(--muted); }
   .focus { color: var(--muted); font-size: 13.5px; margin-top: 2px; }
   .entry ul { margin-top: 9px; list-style: none; }
@@ -118,14 +209,12 @@
     margin-bottom: 6px;
     font-size: 14.5px;
     line-height: 1.72;
-    color: #3f4653;
+    color: var(--body);
   }
   .entry li::before {
     content: "";
-    position: absolute;
-    left: 0; top: .68em;
-    width: 3px; height: 3px;
-    border-radius: 50%;
+    position: absolute; left: 0; top: .68em;
+    width: 3px; height: 3px; border-radius: 50%;
     background: #c9ced6;
   }
   .entry li:last-child { margin-bottom: 0; }
@@ -133,39 +222,43 @@
   /* ===== 技能 ===== */
   .skill-row {
     display: grid;
-    grid-template-columns: 132px 1fr;
+    grid-template-columns: 138px 1fr;
     gap: 24px;
     padding: 11px 0;
     border-top: 1px solid var(--line);
     font-size: 14.5px;
   }
   .skill-row:last-child { border-bottom: 1px solid var(--line); }
-  .skill-label { color: var(--faint); font-size: 13px; padding-top: 2px; }
-  .skill-value { color: #3f4653; line-height: 1.72; }
-
-  /* ===== 自我评价 ===== */
-  .summary { font-size: 14.5px; color: #3f4653; line-height: 1.85; }
-  .download {
-    display: inline-block;
-    margin-top: 20px;
-    font-size: 13.5px;
-    color: var(--accent);
-  }
-
-  footer {
-    max-width: 720px; margin: 0 auto;
-    padding: 24px 26px 56px;
-    border-top: 1px solid var(--line);
+  .skill-label {
+    font-family: var(--mono);
     color: var(--faint);
     font-size: 12.5px;
+    letter-spacing: .02em;
+    padding-top: 2px;
+  }
+  .skill-value { color: var(--body); line-height: 1.72; }
+
+  /* ===== 自我评价 ===== */
+  .summary { font-size: 14.5px; color: var(--body); line-height: 1.85; }
+
+  footer {
+    max-width: 780px; margin: 0 auto;
+    padding: 22px 26px 52px;
+    border-top: 1px solid var(--line);
+    color: var(--faint);
+    font-family: var(--mono);
+    font-size: 12px;
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
   }
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--accent); }
 
-  @media (max-width: 620px) {
+  @media (max-width: 640px) {
     .topbar-inner, .wrap, footer { padding-left: 18px; padding-right: 18px; }
-    .profile { gap: 16px; padding: 32px 0 24px; }
-    .avatar { width: 72px; height: 72px; }
-    .profile h1 { font-size: 21px; }
+    .hero-grid { flex-direction: column-reverse; align-items: flex-start; gap: 22px; padding-top: 34px; padding-bottom: 28px; }
+    .avatar { width: 96px; height: 96px; border-radius: 26px; }
+    h1 { font-size: 30px; }
+    .entry::before { display: none; }
     .entry, .skill-row { grid-template-columns: 1fr; gap: 3px; }
     .when { padding-top: 0; }
     section { padding-top: 34px; }
@@ -173,8 +266,11 @@
     .entry + .entry { padding-top: 20px; }
   }
   @media print {
-    .topbar, .download, footer { display: none; }
-    .wrap { padding-bottom: 0; }
+    .topbar, .cv, footer, .now { display: none; }
+    body { border-top: none; }
+    .hero::before { display: none; }
+    .hero-grid { padding-top: 8px; padding-bottom: 12px; }
+    main { padding-bottom: 0; }
     section { padding-top: 18px; }
     h2 { margin-bottom: 14px; }
     .entry { padding-bottom: 13px; }
@@ -183,178 +279,194 @@
   }
 </style>
 </head>
-<body data-page-node-id="YGBQBqSv9PYqZGmm28F2De">
+<body>
 
-<div class="topbar" data-page-node-id="BWPJPDpWET0GrKvPmpynu1">
-  <div class="topbar-inner" data-page-node-id="pd8EF4EkXvQp26grFf4raN">
-    <span class="topbar-name" data-zh="杨浩然" data-en="Haoran Yang" data-page-node-id="wWJQVqxM0U8YhtBqiWGOY6">杨浩然</span>
-    <button class="lang-btn" id="langToggle" aria-label="Switch language" data-page-node-id="LcQo5nnc662MS3CEE8fCVo">EN</button>
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="topbar-name"><span class="slash">~/</span><span data-zh="杨浩然" data-en="haoran-yang">杨浩然</span></span>
+    <button class="lang-btn" id="langToggle" aria-label="Switch language">EN</button>
   </div>
 </div>
 
-<div class="wrap" data-page-node-id="u2LRQQeuPfO7RXrVwvULXH">
-
-  <div class="profile" data-page-node-id="mZBlrYn1DFH2JKFbCiA3eD">
-    <img class="avatar" src="id.jpg" alt="杨浩然 / Haoran Yang" data-page-node-id="cV7WvuUGV00r7qvZruEsjn">
-    <div data-page-node-id="b4ldkGlYwJO7M9P6T0aWPO">
-      <h1 data-zh="杨浩然" data-en="Haoran Yang" data-page-node-id="Prtmeq4XoKuMFr361V7t3e">杨浩然</h1>
-      <p class="role" data-zh="AI 算法 · 软件开发" data-en="AI Algorithms · Software Development" data-page-node-id="yw5mpd94S8FEkectHg69TO">AI 算法 · 软件开发</p>
-      <div class="contact" data-page-node-id="PIzltYPvybREvgoZkc4lNM">
-        <a class="tel" href="tel:18328377179" data-page-node-id="LbCNnBT8wi4CstWtLpN6Om">18328377179</a>
-        <a href="mailto:youn_hr@126.com" data-page-node-id="UKIoOFcDkpglMICARe0o85">youn_hr@126.com</a>
-        <span data-zh="上海" data-en="Shanghai, China" data-page-node-id="fzA4NQVrqyD5LPlO83lgWc">上海</span>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <p class="kicker" data-zh="软件工程 · 人工智能 · 自动驾驶"
+         data-en="SOFTWARE · AI · AUTONOMOUS DRIVING">软件工程 · 人工智能 · 自动驾驶</p>
+      <h1><span data-zh="杨浩然" data-en="Haoran Yang">杨浩然</span>
+          <span class="latin" data-zh="/ Haoran Yang" data-en="/ 杨浩然">/ Haoran Yang</span></h1>
+      <p class="lead"
+         data-zh="自动驾驶 Infra × 大模型工程化 —— 把算法落地成稳定、高效、能真正跑起来的系统。"
+         data-en="Autonomous-driving Infra × LLM engineering — turning algorithms into systems that run reliably in the real world.">自动驾驶 Infra × 大模型工程化 —— 把算法落地成稳定、高效、能真正跑起来的系统。</p>
+      <div class="now">
+        <span class="dot"></span>
+        <span data-zh="香港大学人工智能硕士在读 · 2026/09 入学"
+              data-en="MSc in AI at HKU · started Sep 2026">香港大学人工智能硕士在读 · 2026/09 入学</span>
       </div>
+      <div class="stack">
+        <span>C++</span><span>Go</span><span>Python</span><span>ROS 2</span><span>gRPC</span><span>PyTorch</span><span>LLM</span>
+      </div>
+      <div class="contact">
+        <a href="tel:18328377179">18328377179</a>
+        <a href="mailto:youn_hr@126.com">youn_hr@126.com</a>
+        <span data-zh="上海" data-en="Shanghai, China">上海</span>
+      </div>
+      <a class="cv" href="yangahoran.pdf" download>
+        <span data-zh="下载简历 ↓" data-en="RESUME ↓">下载简历 ↓</span>
+      </a>
     </div>
+    <img class="avatar" src="avatar.jpg" alt="杨浩然 / Haoran Yang">
   </div>
+</header>
 
-  <section id="education" data-page-node-id="2FV0pMmIMxSc53P2xHAK9V">
-    <h2 data-zh="教育背景" data-en="Education" data-page-node-id="pvjxr6OZuKyf5dVyw0F70F">教育背景</h2>
+<main class="wrap">
 
-    <div class="entry" data-page-node-id="ZWCYG3rnq1QAyYkSuELvf1">
-      <div class="when" data-zh="2026/09 – 至今" data-en="2026/09 – Present" data-page-node-id="0ULOtZ7Lge1eqaPslvAMJC">2026/09 – 至今</div>
-      <div data-page-node-id="YkFxo8V0CZEbPlhGrtoHGK">
-        <h3 data-page-node-id="eD4YqKX9IfQV2fife2Ck0B"><span data-zh="香港大学" data-en="The University of Hong Kong" data-page-node-id="UOZWw5VvcU0Lr29pGGeCqG">香港大学</span> <span class="role-text" data-zh="人工智能 · 硕士" data-en="MSc in Artificial Intelligence" data-page-node-id="rmN6uZeDkBaT4oH6BiETVS">人工智能 · 硕士</span></h3>
+  <section id="education">
+    <h2><span class="num">01</span><span data-zh="教育背景" data-en="Education">教育背景</span></h2>
+
+    <div class="entry">
+      <div class="when" data-zh="2026/09 – 至今" data-en="2026/09 – Present">2026/09 – 至今</div>
+      <div>
+        <h3><span data-zh="香港大学" data-en="The University of Hong Kong">香港大学</span> <span class="role-text" data-zh="人工智能 · 硕士" data-en="MSc in Artificial Intelligence">人工智能 · 硕士</span></h3>
         <p class="focus" data-zh="计算及数据科学学院（School of Computing and Data Science）"
-           data-en="School of Computing and Data Science" data-page-node-id="eWe5pGPgHteImIJTJLgzrC">计算及数据科学学院（School of Computing and Data Science）</p>
+           data-en="School of Computing and Data Science">计算及数据科学学院（School of Computing and Data Science）</p>
       </div>
     </div>
 
-    <div class="entry" data-page-node-id="LItCuOMjfdBftSOGGbPbw3">
-      <div class="when" data-page-node-id="vCz0IBsD8K8i1cT3IOccAo">2019/09 – 2023/06</div>
-      <div data-page-node-id="QmOBuhTJaBiPfFggP8rQWq">
-        <h3 data-page-node-id="JmmyIdJFYqQgFLe3EwQKO6"><span data-zh="四川大学" data-en="Sichuan University" data-page-node-id="GRpvsWkba8hr11GJdjirJ9">四川大学</span> <span class="role-text" data-zh="电子信息工程 · 本科" data-en="B.Eng. in Electronic Information Engineering" data-page-node-id="AlWk2jrL3QiEdGd0ZtRm9z">电子信息工程 · 本科</span></h3>
-        <p class="focus" data-page-node-id="AF7HubwAYvTbC5CytsKeUk">
-          <span data-zh="主修课程：" data-en="Core courses: " data-page-node-id="9qqvALhyLpexLxAfJgQwMi">主修课程：</span><span
+    <div class="entry">
+      <div class="when">2019/09 – 2023/06</div>
+      <div>
+        <h3><span data-zh="四川大学" data-en="Sichuan University">四川大学</span> <span class="role-text" data-zh="电子信息工程 · 本科" data-en="B.Eng. in Electronic Information Engineering">电子信息工程 · 本科</span></h3>
+        <p class="focus">
+          <span data-zh="主修课程：" data-en="Core courses: ">主修课程：</span><span
             data-zh="C++ 程序设计、数据结构、操作系统、编译原理、优化算法、图像处理"
-            data-en="C++ Programming, Data Structures, Operating Systems, Compiler Principles, Optimization Algorithms, Image Processing" data-page-node-id="E96QtbnVZZW0XxVnx4OCHt">C++ 程序设计、数据结构、操作系统、编译原理、优化算法、图像处理</span>
+            data-en="C++ Programming, Data Structures, Operating Systems, Compiler Principles, Optimization Algorithms, Image Processing">C++ 程序设计、数据结构、操作系统、编译原理、优化算法、图像处理</span>
         </p>
       </div>
     </div>
   </section>
 
-  <section id="experience" data-page-node-id="wt9M8ODqy9vW05VFy2C07q">
-    <h2 data-zh="工作经验" data-en="Experience" data-page-node-id="Un6GE577Fddi3VmJEamU19">工作经验</h2>
+  <section id="experience">
+    <h2><span class="num">02</span><span data-zh="工作经验" data-en="Experience">工作经验</span></h2>
 
-    <div class="entry" data-page-node-id="MjMc3urYsOlZlQhOnOA926">
-      <div class="when" data-page-node-id="GkWUZ7bPuZhLtAQBbpdchW">2026/06 – 2026/08</div>
-      <div data-page-node-id="blcv7D6ycx9TFMvuI8ztJR">
-        <h3 data-page-node-id="DduR61RKCh9AS0UHPRMWob"><span data-zh="卓驭科技" data-en="Zhuoyu Technology" data-page-node-id="5MKmebvQQJvMsotIN4H2AC">卓驭科技</span> <span class="role-text" data-zh="自动驾驶系统工程师" data-en="Autonomous Driving System Engineer" data-page-node-id="ZMQVCzDW5uZRMaxxHFWSH1">自动驾驶系统工程师</span></h3>
-        <p class="focus" data-zh="模型后训练 · 数据挖掘" data-en="Model post-training · Data mining" data-page-node-id="HVvkFtwY0PzPb6qmX1YXem">模型后训练 · 数据挖掘</p>
-        <ul data-page-node-id="A7lh4OI8HUTGNnt0h8SRVu">
+    <div class="entry">
+      <div class="when">2026/06 – 2026/08</div>
+      <div>
+        <h3><span data-zh="卓驭科技" data-en="Zhuoyu Technology">卓驭科技</span> <span class="role-text" data-zh="自动驾驶系统工程师" data-en="Autonomous Driving System Engineer">自动驾驶系统工程师</span></h3>
+        <p class="focus" data-zh="模型后训练 · 数据挖掘" data-en="Model post-training · Data mining">模型后训练 · 数据挖掘</p>
+        <ul>
           <li data-zh="参与自动驾驶模型后训练（post-training）全流程，包括训练数据构建、模型微调与效果评估"
-              data-en="Worked on the end-to-end post-training pipeline for autonomous-driving models, covering training data construction, fine-tuning and evaluation." data-page-node-id="xhVSpzlpLAXM2ioSfL8Bgx">参与自动驾驶模型后训练（post-training）全流程，包括训练数据构建、模型微调与效果评估</li>
+              data-en="Worked on the end-to-end post-training pipeline for autonomous-driving models, covering training data construction, fine-tuning and evaluation.">参与自动驾驶模型后训练（post-training）全流程，包括训练数据构建、模型微调与效果评估</li>
           <li data-zh="负责数据挖掘与数据清洗流程，从原始驾驶数据中挖掘高价值样本，支撑模型迭代"
-              data-en="Owned data mining and cleaning workflows, extracting high-value samples from raw driving data to support model iteration." data-page-node-id="E3uCnqzCqwWgaFGJaWIFBH">负责数据挖掘与数据清洗流程，从原始驾驶数据中挖掘高价值样本，支撑模型迭代</li>
+              data-en="Owned data mining and cleaning workflows, extracting high-value samples from raw driving data to support model iteration.">负责数据挖掘与数据清洗流程，从原始驾驶数据中挖掘高价值样本，支撑模型迭代</li>
         </ul>
       </div>
     </div>
 
-    <div class="entry" data-page-node-id="3pVuFksBZd9YX2Pl3ulSvz">
-      <div class="when" data-page-node-id="sWNNGZaJlciedFzS3BxUbG">2024/07 – 2026/05</div>
-      <div data-page-node-id="ixiN5VTlQ77DovGTDcnLfG">
-        <h3 data-page-node-id="ZIFJHtBC2zHKiU4LuyxDV8"><span data-zh="文远知行" data-en="WeRide" data-page-node-id="ccpws9LhBh3udLcPhcW5oY">文远知行</span> <span class="role-text" data-zh="Infra 系统工程师" data-en="Infra System Engineer" data-page-node-id="F8st5aORL0VdKk485OIrJp">Infra 系统工程师</span></h3>
+    <div class="entry">
+      <div class="when">2024/07 – 2026/05</div>
+      <div>
+        <h3><span data-zh="文远知行" data-en="WeRide">文远知行</span> <span class="role-text" data-zh="Infra 系统工程师" data-en="Infra System Engineer">Infra 系统工程师</span></h3>
         <p class="focus" data-zh="自动驾驶车载 Infra · 类 ROS 框架 · 系统性能优化"
-           data-en="Onboard Infra · ROS-like framework · System performance" data-page-node-id="rEQa596aYgQzha1c2gWDOI">自动驾驶车载 Infra · 类 ROS 框架 · 系统性能优化</p>
-        <ul data-page-node-id="2MoZ39KhjqEsiVKbA0sX4G">
+           data-en="Onboard Infra · ROS-like framework · System performance">自动驾驶车载 Infra · 类 ROS 框架 · 系统性能优化</p>
+        <ul>
           <li data-zh="负责自动驾驶车载后端业务模块的开发与维护，完成系统稳定性优化，保障车端自驾系统高可靠、高效率运行"
-              data-en="Developed and maintained onboard backend modules for autonomous driving; improved system stability to keep the self-driving stack reliable and efficient." data-page-node-id="nUnaaEubv41KDulP0XCy2y">负责自动驾驶车载后端业务模块的开发与维护，完成系统稳定性优化，保障车端自驾系统高可靠、高效率运行</li>
+              data-en="Developed and maintained onboard backend modules for autonomous driving; improved system stability to keep the self-driving stack reliable and efficient.">负责自动驾驶车载后端业务模块的开发与维护，完成系统稳定性优化，保障车端自驾系统高可靠、高效率运行</li>
           <li data-zh="基于自研类 ROS 框架开发系统模块监控体系，完成数据落盘、实时上报及分布式部署"
-              data-en="Built a module monitoring system on the in-house ROS-like framework: data persistence, real-time reporting and distributed deployment." data-page-node-id="zPsJRKNDRrU22CwBXbXHNd">基于自研类 ROS 框架开发系统模块监控体系，完成数据落盘、实时上报及分布式部署</li>
+              data-en="Built a module monitoring system on the in-house ROS-like framework: data persistence, real-time reporting and distributed deployment.">基于自研类 ROS 框架开发系统模块监控体系，完成数据落盘、实时上报及分布式部署</li>
           <li data-zh="负责自动驾驶与底盘线控交互中间件的开发及维护，优化模块通信逻辑，提升系统整体交互性能"
-              data-en="Developed and maintained the middleware between the autonomous-driving stack and chassis-by-wire, optimizing communication logic." data-page-node-id="BcKZJm5kQaR3QpF64VH08X">负责自动驾驶与底盘线控交互中间件的开发及维护，优化模块通信逻辑，提升系统整体交互性能</li>
+              data-en="Developed and maintained the middleware between the autonomous-driving stack and chassis-by-wire, optimizing communication logic.">负责自动驾驶与底盘线控交互中间件的开发及维护，优化模块通信逻辑，提升系统整体交互性能</li>
           <li data-zh="承担车端 Oncall 工作，处理现场部署、程序 Crash 等问题，快速定位并解决系统故障"
-              data-en="On-call for the onboard system: handled on-site deployment and crashes, rapidly located and resolved failures." data-page-node-id="mI906fWzbEg2b8XsBOGj0s">承担车端 Oncall 工作，处理现场部署、程序 Crash 等问题，快速定位并解决系统故障</li>
+              data-en="On-call for the onboard system: handled on-site deployment and crashes, rapidly located and resolved failures.">承担车端 Oncall 工作，处理现场部署、程序 Crash 等问题，快速定位并解决系统故障</li>
         </ul>
       </div>
     </div>
 
-    <div class="entry" data-page-node-id="oEWCOqxmVaAZ2sjz4cdHK2">
-      <div class="when" data-page-node-id="EcN7Pbr5hMPoLjDmvlJF1A">2023/07 – 2024/07</div>
-      <div data-page-node-id="CQdaYcuB7NlX64dw0cvq6S">
-        <h3 data-page-node-id="02C7S0pWPpRBtkgS7Szg4C"><span data-zh="上海宇量昇科技有限公司" data-en="Shanghai Yuliangsheng Technology Co., Ltd." data-page-node-id="EDh0zcUKCF5rKLP24KjZwV">上海宇量昇科技有限公司</span> <span class="role-text" data-zh="软件工程师" data-en="Software Engineer" data-page-node-id="6IexZhqBcEJtC02LDR1jZ1">软件工程师</span></h3>
-        <ul data-page-node-id="GgDpcfTFhPtObxXeZlxhTu">
+    <div class="entry">
+      <div class="when">2023/07 – 2024/07</div>
+      <div>
+        <h3><span data-zh="上海宇量昇科技有限公司" data-en="Shanghai Yuliangsheng Technology Co., Ltd.">上海宇量昇科技有限公司</span> <span class="role-text" data-zh="软件工程师" data-en="Software Engineer">软件工程师</span></h3>
+        <ul>
           <li data-zh="负责高精度计算模块的算法工程化开发，将算法逻辑转化为可落地的工程代码，实现模块实际业务应用"
-              data-en="Led production engineering of high-precision computing modules, translating algorithm logic into deployable code." data-page-node-id="VGrlcfUqQ0cC7B0wXKjRcO">负责高精度计算模块的算法工程化开发，将算法逻辑转化为可落地的工程代码，实现模块实际业务应用</li>
+              data-en="Led production engineering of high-precision computing modules, translating algorithm logic into deployable code.">负责高精度计算模块的算法工程化开发，将算法逻辑转化为可落地的工程代码，实现模块实际业务应用</li>
           <li data-zh="参与业务组件的模块化重构与性能优化，完成核心功能的首次交付，提升组件复用性与运行效率"
-              data-en="Participated in modular refactoring and performance optimization of business components, delivering core features for the first time." data-page-node-id="BMIO1EjzlWSqmFsN8bH6Bx">参与业务组件的模块化重构与性能优化，完成核心功能的首次交付，提升组件复用性与运行效率</li>
+              data-en="Participated in modular refactoring and performance optimization of business components, delivering core features for the first time.">参与业务组件的模块化重构与性能优化，完成核心功能的首次交付，提升组件复用性与运行效率</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section id="projects" data-page-node-id="b9q3jliHrDlZlkdmSpbpvp">
-    <h2 data-zh="项目经历" data-en="Projects" data-page-node-id="Vm0i60ayQFAlMkFHvJu0LD">项目经历</h2>
+  <section id="projects">
+    <h2><span class="num">03</span><span data-zh="项目经历" data-en="Projects">项目经历</span></h2>
 
-    <div class="entry" data-page-node-id="1QGiYQx6UawYk6ujE7KxhM">
-      <div class="when" data-zh="核心开发" data-en="Core Developer" data-page-node-id="tPw2VJzq2A5rz6RqvU9ew5">核心开发</div>
-      <div data-page-node-id="OgJYd0FdEzxOPoLq7Njqje">
-        <h3 data-page-node-id="V5z2yMMyZniYxgRM0KlYeZ"><span data-zh="WeTalk — 基于 C++ 的全栈分布式即时通讯系统" data-en="WeTalk — Full-stack Distributed IM System in C++" data-page-node-id="EEi5HSE3uQFS6COcGk5nSe">WeTalk — 基于 C++ 的全栈分布式即时通讯系统</span></h3>
-        <ul data-page-node-id="O5XPlOo6au0OwMF4vIdhpJ">
+    <div class="entry">
+      <div class="when" data-zh="核心开发" data-en="Core Dev">核心开发</div>
+      <div>
+        <h3><span data-zh="WeTalk — 基于 C++ 的全栈分布式即时通讯系统" data-en="WeTalk — Full-stack Distributed IM System in C++">WeTalk — 基于 C++ 的全栈分布式即时通讯系统</span></h3>
+        <ul>
           <li data-zh="负责 DispatchServer 网关开发，提供 HTTP 接口实现登录注册，通过 gRPC 完成服务分发与认证"
-              data-en="Developed the DispatchServer gateway: HTTP APIs for login/registration, gRPC for service dispatch and authentication." data-page-node-id="Jfefb6nXdMVFqqCLknDNHt">负责 DispatchServer 网关开发，提供 HTTP 接口实现登录注册，通过 gRPC 完成服务分发与认证</li>
+              data-en="Developed the DispatchServer gateway: HTTP APIs for login/registration, gRPC for service dispatch and authentication.">负责 DispatchServer 网关开发，提供 HTTP 接口实现登录注册，通过 gRPC 完成服务分发与认证</li>
           <li data-zh="基于 Asio 实现 TCP 长连接异步通信，池化 io_context 提升系统并发能力"
-              data-en="Implemented asynchronous TCP long-connection communication based on Asio, with pooled io_context for higher concurrency." data-page-node-id="7RF7FPLCWRehCRjrqRYHxj">基于 Asio 实现 TCP 长连接异步通信，池化 io_context 提升系统并发能力</li>
+              data-en="Implemented asynchronous TCP long-connection communication based on Asio, with pooled io_context for higher concurrency.">基于 Asio 实现 TCP 长连接异步通信，池化 io_context 提升系统并发能力</li>
           <li data-zh="完成 QT 客户端开发与服务端模块化设计，支持分布式部署，实现状态管理与认证服务解耦"
-              data-en="Built the Qt client and modular server design supporting distributed deployment, decoupling state management from authentication." data-page-node-id="HCYyDbW0nCrPB1jAySqlfG">完成 QT 客户端开发与服务端模块化设计，支持分布式部署，实现状态管理与认证服务解耦</li>
+              data-en="Built the Qt client and modular server design supporting distributed deployment, decoupling state management from authentication.">完成 QT 客户端开发与服务端模块化设计，支持分布式部署，实现状态管理与认证服务解耦</li>
           <li data-zh="基于 QT、gRPC、Boost 的高可用、高并发全栈分布式即时通讯系统"
-              data-en="A highly available, highly concurrent full-stack distributed IM system on Qt, gRPC and Boost." data-page-node-id="wkUhoPgrMCRFFEVUdGwL43">基于 QT、gRPC、Boost 的高可用、高并发全栈分布式即时通讯系统</li>
+              data-en="A highly available, highly concurrent full-stack distributed IM system on Qt, gRPC and Boost.">基于 QT、gRPC、Boost 的高可用、高并发全栈分布式即时通讯系统</li>
         </ul>
       </div>
     </div>
 
-    <div class="entry" data-page-node-id="y6sOVljCkgPntpCM5iEPo7">
-      <div class="when" data-zh="核心开发" data-en="Core Developer" data-page-node-id="huqFD6fxcPKpEBRXjl1SBY">核心开发</div>
-      <div data-page-node-id="I6z2yozaSPcSnCVACrx94s">
-        <h3 data-page-node-id="5gEj21TFW4R1gfvE79zTG2"><span data-zh="基于 Go 的轻量级后端框架" data-en="Lightweight Backend Framework in Go" data-page-node-id="IJ6cEZPNy8Rwa5R86w1W1c">基于 Go 的轻量级后端框架</span></h3>
-        <ul data-page-node-id="QODvHsOEKHlwezok7IALDr">
+    <div class="entry">
+      <div class="when" data-zh="核心开发" data-en="Core Dev">核心开发</div>
+      <div>
+        <h3><span data-zh="基于 Go 的轻量级后端框架" data-en="Lightweight Backend Framework in Go">基于 Go 的轻量级后端框架</span></h3>
+        <ul>
           <li data-zh="设计并实现多路由管理、读写分离机制，结合消息队列与任务队列优化业务处理流程"
-              data-en="Designed multi-router management and read-write separation, combining message and task queues to streamline processing." data-page-node-id="hZIkPlDlQbPrxsd2Za7CeB">设计并实现多路由管理、读写分离机制，结合消息队列与任务队列优化业务处理流程</li>
+              data-en="Designed multi-router management and read-write separation, combining message and task queues to streamline processing.">设计并实现多路由管理、读写分离机制，结合消息队列与任务队列优化业务处理流程</li>
           <li data-zh="针对高并发场景进行框架设计，支持连接状态管理、自定义属性及一键配置等功能"
-              data-en="Designed for high concurrency: connection state management, custom attributes and one-click configuration." data-page-node-id="6D6CYh0zI5h9DZRbaDvAot">针对高并发场景进行框架设计，支持连接状态管理、自定义属性及一键配置等功能</li>
+              data-en="Designed for high concurrency: connection state management, custom attributes and one-click configuration.">针对高并发场景进行框架设计，支持连接状态管理、自定义属性及一键配置等功能</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section id="skills" data-page-node-id="Fb34epko0hMFBsdGCdBXUM">
-    <h2 data-zh="专业技能" data-en="Skills" data-page-node-id="PWYzFSMJkCMBAH4g1KyCop">专业技能</h2>
-    <div class="skill-row" data-page-node-id="ETv1VeNLLrZ8YZY9SiE2xu">
-      <div class="skill-label" data-zh="AI / 大模型" data-en="AI / LLM" data-page-node-id="KCY3rJ7QTOBXWAE3PCWjQK">AI / 大模型</div>
+  <section id="skills">
+    <h2><span class="num">04</span><span data-zh="专业技能" data-en="Skills">专业技能</span></h2>
+    <div class="skill-row">
+      <div class="skill-label" data-zh="AI / 大模型" data-en="AI / LLM">AI / 大模型</div>
       <div class="skill-value" data-zh="模型后训练（post-training）、数据挖掘与数据集构建、LangChain、LlamaCpp、ONNX 推理框架，PyTorch / TensorFlow"
-           data-en="Model post-training, data mining &amp; dataset construction, LangChain, LlamaCpp, ONNX inference frameworks, PyTorch / TensorFlow" data-page-node-id="rZQaQteMhTg3h1qbRNGFiz">模型后训练（post-training）、数据挖掘与数据集构建、LangChain、LlamaCpp、ONNX 推理框架，PyTorch / TensorFlow</div>
+           data-en="Model post-training, data mining &amp; dataset construction, LangChain, LlamaCpp, ONNX inference frameworks, PyTorch / TensorFlow">模型后训练（post-training）、数据挖掘与数据集构建、LangChain、LlamaCpp、ONNX 推理框架，PyTorch / TensorFlow</div>
     </div>
-    <div class="skill-row" data-page-node-id="P4xKfar2Uz54gD7uiedUw8">
-      <div class="skill-label" data-zh="开发语言" data-en="Languages" data-page-node-id="jXv0l4vXkHAhiJdwyzpFXx">开发语言</div>
+    <div class="skill-row">
+      <div class="skill-label" data-zh="开发语言" data-en="Languages">开发语言</div>
       <div class="skill-value" data-zh="C++11/17（OOP · 泛型 · STL · 模板 · 内存管理 · 多线程 · Boost）、Go（goroutine/channel · Gin · RESTful）、Python（Flask · FastAPI · PyTorch · OpenCV）、MySQL / Redis"
-           data-en="C++11/17 (OOP · templates · STL · memory management · multithreading · Boost), Go (goroutine/channel · Gin · RESTful), Python (Flask · FastAPI · PyTorch · OpenCV), MySQL / Redis" data-page-node-id="4V78syBgF7I3e0GlLFx0cg">C++11/17（OOP · 泛型 · STL · 模板 · 内存管理 · 多线程 · Boost）、Go（goroutine/channel · Gin · RESTful）、Python（Flask · FastAPI · PyTorch · OpenCV）、MySQL / Redis</div>
+           data-en="C++11/17 (OOP · templates · STL · memory management · multithreading · Boost), Go (goroutine/channel · Gin · RESTful), Python (Flask · FastAPI · PyTorch · OpenCV), MySQL / Redis">C++11/17（OOP · 泛型 · STL · 模板 · 内存管理 · 多线程 · Boost）、Go（goroutine/channel · Gin · RESTful）、Python（Flask · FastAPI · PyTorch · OpenCV）、MySQL / Redis</div>
     </div>
-    <div class="skill-row" data-page-node-id="gguxE4ueh6dv2S3rqPWLYw">
-      <div class="skill-label" data-zh="中间件与协议" data-en="Middleware" data-page-node-id="29pdcq8T7UzJxkVYbXoiB0">中间件与协议</div>
+    <div class="skill-row">
+      <div class="skill-label" data-zh="中间件与协议" data-en="Middleware">中间件与协议</div>
       <div class="skill-value" data-zh="IO 多路复用、HTTP/HTTPS、WebSocket、MQTT、gRPC / Protobuf、ROS / ROS2、自动驾驶部署标定流程"
-           data-en="IO multiplexing, HTTP/HTTPS, WebSocket, MQTT, gRPC / Protobuf, ROS / ROS2, AD deployment &amp; calibration" data-page-node-id="1EVo617dyAiF9FKlJdGQwK">IO 多路复用、HTTP/HTTPS、WebSocket、MQTT、gRPC / Protobuf、ROS / ROS2、自动驾驶部署标定流程</div>
+           data-en="IO multiplexing, HTTP/HTTPS, WebSocket, MQTT, gRPC / Protobuf, ROS / ROS2, AD deployment &amp; calibration">IO 多路复用、HTTP/HTTPS、WebSocket、MQTT、gRPC / Protobuf、ROS / ROS2、自动驾驶部署标定流程</div>
     </div>
-    <div class="skill-row" data-page-node-id="64GKskLf4NnCBuhfbBMfbp">
-      <div class="skill-label" data-zh="工程工具" data-en="Tooling" data-page-node-id="ixRDsUq7GrcLO9OG454RDC">工程工具</div>
+    <div class="skill-row">
+      <div class="skill-label" data-zh="工程工具" data-en="Tooling">工程工具</div>
       <div class="skill-value" data-zh="Git、g++ / CMake / Bazel、GDB / Valgrind、Perf / Top / Htop，能完成开发全流程工程化落地与性能调优"
-           data-en="Git, g++ / CMake / Bazel, GDB / Valgrind, Perf / Top / Htop — end-to-end engineering and performance tuning" data-page-node-id="DByllieAqBnBlZ7CfGs91x">Git、g++ / CMake / Bazel、GDB / Valgrind、Perf / Top / Htop，能完成开发全流程工程化落地与性能调优</div>
+           data-en="Git, g++ / CMake / Bazel, GDB / Valgrind, Perf / Top / Htop — end-to-end engineering and performance tuning">Git、g++ / CMake / Bazel、GDB / Valgrind、Perf / Top / Htop，能完成开发全流程工程化落地与性能调优</div>
     </div>
   </section>
 
-  <section id="summary" data-page-node-id="aa07e9QBmEFr4WE3mlCHpb">
-    <h2 data-zh="自我评价" data-en="Summary" data-page-node-id="8PuSkgKvzcUXNhRKIX2Day">自我评价</h2>
+  <section id="summary">
+    <h2><span class="num">05</span><span data-zh="自我评价" data-en="Summary">自我评价</span></h2>
     <p class="summary"
        data-zh="具备自动驾驶模型后训练与数据挖掘的工程实践，拥有扎实的 C++/Python/Go 开发功底；具备算法工程化、模块化重构、系统性能优化的实操能力，熟练掌握后端开发核心技术、主流通信协议与工程化工具，能独立完成后端模块、轻量级框架及 Infra 系统的开发、部署与问题排查。"
-       data-en="Hands-on experience in autonomous-driving model post-training and data mining, with a solid C++/Python/Go engineering foundation. Skilled at algorithm engineering, modular refactoring and system performance optimization, and proficient in core backend technologies, mainstream communication protocols and engineering tooling — able to independently develop, deploy and troubleshoot backend modules, lightweight frameworks and Infra systems." data-page-node-id="AHu2vlu8Llv6Gg6u8gYDUu">具备自动驾驶模型后训练与数据挖掘的工程实践，拥有扎实的 C++/Python/Go 开发功底；具备算法工程化、模块化重构、系统性能优化的实操能力，熟练掌握后端开发核心技术、主流通信协议与工程化工具，能独立完成后端模块、轻量级框架及 Infra 系统的开发、部署与问题排查。</p>
-    <a class="download" href="yangahoran.pdf" download data-page-node-id="Eugjpd104iBRw42cseQkvz">
-      <span data-zh="下载简历 PDF ↓" data-en="Download Resume (PDF) ↓" data-page-node-id="N8C4zGzUEL0E6UxUOV5BEo">下载简历 PDF ↓</span>
-    </a>
+       data-en="Hands-on experience in autonomous-driving model post-training and data mining, with a solid C++/Python/Go engineering foundation. Skilled at algorithm engineering, modular refactoring and system performance optimization, and proficient in core backend technologies, mainstream communication protocols and engineering tooling — able to independently develop, deploy and troubleshoot backend modules, lightweight frameworks and Infra systems.">具备自动驾驶模型后训练与数据挖掘的工程实践，拥有扎实的 C++/Python/Go 开发功底；具备算法工程化、模块化重构、系统性能优化的实操能力，熟练掌握后端开发核心技术、主流通信协议与工程化工具，能独立完成后端模块、轻量级框架及 Infra 系统的开发、部署与问题排查。</p>
   </section>
 
-</div>
+</main>
 
-<footer data-page-node-id="GUW56mtRSDMUDdmG1oOffp">
-  <span data-page-node-id="v7FR3RvqE32uDEFH3JfA4y">© 2026 <span data-zh="杨浩然" data-en="Haoran Yang" data-page-node-id="2sPNgRMr03y8n3qGj6IL9R">杨浩然</span></span>
-  <span data-page-node-id="osHpzpJJiR80TPYwKlH8zW"><a href="mailto:youn_hr@126.com" data-page-node-id="A4HYF265fUu7HAaar9lsXY">youn_hr@126.com</a></span>
+<footer>
+  <span>© 2026 <span data-zh="杨浩然" data-en="Haoran Yang">杨浩然</span> ·
+    <span data-zh="最近更新" data-en="Updated">最近更新</span> 2026-09-11</span>
+  <a href="https://github.com/hryang1130" target="_blank" rel="noopener">github.com/hryang1130</a>
 </footer>
 
 <script>
