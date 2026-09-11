@@ -404,6 +404,12 @@
 
   <section id="projects" data-page-node-id="f04ddxLOYNqCFSkQ9kxvSU">
     <h2 data-i18n="projects.title" data-page-node-id="sWXpPzrgoZ6yJbdZ3UouGC">项目</h2>
+    <div class="proj" data-page-node-id="newllmgo">
+      <h3><a href="https://github.com/hryang1130/llm_go" target="_blank" rel="noopener" data-i18n="p2.title">llm_go — LLM 全链路工作流：训练 → 量化 → Go 网关部署</a></h3>
+      <p data-i18n="p2.desc">从零走通一个小型 LLaMA 架构模型的全生命周期：transformers 从头训练（BPE 分词、GQA），导出 GGUF，用 llama.cpp 量化到 Q4_K_M（体积约为 F16 的 1/4），最后由 Go（Gin）网关对外提供 OpenAI 兼容的推理 API，支持流式输出，Docker Compose 一键编排。另外内置了一个可视化节点编排界面：六个流水线节点在画布上拖拽连线、按拓扑序执行、SSE 实时回传日志。</p>
+      <p data-i18n="p2.why">做这个项目是想把「模型训练」和「系统部署」两头的知识真正串起来——训练侧理解参数和数据怎么变成权重，部署侧理解权重怎么被量化、压缩、高效地对外服务。这也是我理解 LLM Infra 每个环节成本与瓶颈的方式。</p>
+      <div class="tags">PyTorch · transformers · llama.cpp · GGUF 量化 · Go (Gin) · Docker Compose</div>
+    </div>
     <div class="proj" data-page-node-id="fuEoO3JAnkJbPUxnuwj2pb">
       <h3 data-i18n="p1.title" data-page-node-id="wkR05l2e1fvdaej3cORaXF">WeTalk — 分布式即时通讯系统</h3>
       <p data-i18n="p1.desc" data-page-node-id="JXVUOjCF7kOi7RGpkP7h0c">一个用 C++ 从零搭起来的全栈 IM：Qt 客户端负责界面，DispatchServer 网关提供 HTTP 接口做登录注册，服务之间用 gRPC 分发和认证，长连接部分基于 Asio 实现异步 TCP 通信，通过池化 io_context 提升并发能力。服务端按模块拆分、支持分布式部署，状态管理和认证服务是解耦的。</p>

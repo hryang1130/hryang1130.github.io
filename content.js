@@ -109,6 +109,18 @@ window.SITE_CONTENT = {
 
   /* ---------- 项目 ---------- */
   "projects.title": { zh: "项目", en: "Projects" },
+  "p2.title": {
+    zh: "llm_go — LLM 全链路工作流：训练 → 量化 → Go 网关部署",
+    en: "llm_go — End-to-End LLM Pipeline: Train → Quantize → Deploy via a Go Gateway"
+  },
+  "p2.desc": {
+    zh: "从零走通一个小型 LLaMA 架构模型的全生命周期：transformers 从头训练（BPE 分词、GQA），导出 GGUF，用 llama.cpp 量化到 Q4_K_M（体积约为 F16 的 1/4），最后由 Go（Gin）网关对外提供 OpenAI 兼容的推理 API，支持流式输出，Docker Compose 一键编排。另外内置了一个可视化节点编排界面：六个流水线节点在画布上拖拽连线、按拓扑序执行、SSE 实时回传日志。",
+    en: "A complete, hands-on lifecycle for a small LLaMA-style model: training from scratch with transformers (BPE tokenizer, GQA), export to GGUF, quantization to Q4_K_M with llama.cpp (about 1/4 of the F16 size), and an OpenAI-compatible inference API served through a Go (Gin) gateway with streaming support, orchestrated by Docker Compose. It also ships a visual node-based workflow editor: six pipeline nodes on a canvas, wired and executed in topological order with logs streamed live over SSE."
+  },
+  "p2.why": {
+    zh: "做这个项目是想把「模型训练」和「系统部署」两头的知识真正串起来——训练侧理解参数和数据怎么变成权重，部署侧理解权重怎么被量化、压缩、高效地对外服务。这也是我理解 LLM Infra 每个环节成本与瓶颈的方式。",
+    en: "I built it to connect the two halves I care about — model training and systems deployment: on one side, how parameters and data become weights; on the other, how those weights get quantized, compressed, and served efficiently. It's my way of understanding the cost and bottlenecks of every stage of LLM Infra."
+  },
   "p1.title": {
     zh: "WeTalk — 分布式即时通讯系统",
     en: "WeTalk — Distributed IM System"
