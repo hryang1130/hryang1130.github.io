@@ -60,8 +60,8 @@ window.SITE_CONTENT = {
   "t1.school":  { zh: "香港大学", en: "The University of Hong Kong" },
   "t1.degree":  { zh: "人工智能硕士在读", en: "MSc in Artificial Intelligence" },
   "t1.note":    {
-    zh: "计算机学院，在上 Deep Learning、LLM、NLP相关课程",
-    en: "School of Computing; taking Deep Learning, LLM and NLP courses"
+    zh: "计算及数据科学学院（School of Computing and Data Science），在上 Deep Learning、LLM、NLP 相关课程",
+    en: "School of Computing and Data Science; taking Deep Learning, LLM and NLP courses"
   },
 
   "t2.company": { zh: "卓驭科技", en: "Zhuoyu Technology" },
