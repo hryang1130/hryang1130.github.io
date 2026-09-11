@@ -7,18 +7,14 @@
 <meta name="description" content="杨浩然 - AI 算法 / 软件开发. 香港大学人工智能硕士在读, 自动驾驶模型后训练与数据挖掘. C++ / Go / Python.">
 <style>
   :root {
-    --text: #16181d;
-    --body: #3f4653;
+    --text: #1f2328;
     --muted: #6b7280;
     --faint: #9ca3af;
-    --line: #e6e8ee;
-    --accent: #4f46e5;
-    --tint: #eef2ff;
+    --line: #e8eaed;
+    --accent: #2f5fd0;
     --bg: #ffffff;
-    --mono: ui-monospace, "SF Mono", "Cascadia Mono", "JetBrains Mono", Consolas, "Courier New", monospace;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
       "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
@@ -28,13 +24,9 @@
     font-size: 15px;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    border-top: 3px solid var(--accent);
   }
-  ::selection { background: #e0e7ff; }
   a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; text-underline-offset: 3px; }
-
-  .wrap { max-width: 780px; margin: 0 auto; padding: 0 26px; }
+  a:hover { text-decoration: underline; }
 
   /* ===== 顶部条 ===== */
   .topbar {
@@ -44,19 +36,18 @@
     border-bottom: 1px solid var(--line);
   }
   .topbar-inner {
-    max-width: 780px; margin: 0 auto;
-    padding: 13px 26px;
+    max-width: 720px; margin: 0 auto;
+    padding: 14px 26px;
     display: flex; align-items: center; justify-content: space-between;
   }
-  .topbar-name { font-family: var(--mono); font-size: 13px; letter-spacing: .06em; }
-  .topbar-name .slash { color: var(--accent); }
+  .topbar-name { font-size: 13.5px; font-weight: 600; letter-spacing: .05em; }
   .lang-btn {
     background: none;
     border: 1px solid var(--line);
     border-radius: 6px;
     color: var(--muted);
-    font-family: var(--mono);
     font-size: 12.5px;
+    font-family: inherit;
     letter-spacing: .04em;
     padding: 3px 12px;
     cursor: pointer;
@@ -64,142 +55,60 @@
   }
   .lang-btn:hover { color: var(--accent); border-color: #c7d2fe; }
 
-  /* ===== Hero ===== */
-  .hero { position: relative; }
-  .hero::before {
-    content: "";
-    position: absolute; inset: 0;
-    background-image: radial-gradient(#dfe4ee 1px, transparent 1.4px);
-    background-size: 20px 20px;
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.85), transparent 88%);
-    mask-image: linear-gradient(to bottom, rgba(0,0,0,.85), transparent 88%);
-    pointer-events: none;
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 26px 64px; }
+
+  /* ===== 个人信息 ===== */
+  .profile {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 44px 0 32px;
   }
-  .hero-grid {
-    position: relative;
-    display: flex; align-items: center; gap: 34px;
-    padding-top: 52px; padding-bottom: 40px;
-  }
-  .hero-text { flex: 1; min-width: 0; }
-  .kicker {
-    font-family: var(--mono);
-    font-size: 11px; letter-spacing: .24em;
-    color: var(--accent);
-    margin-bottom: 12px;
-  }
-  h1 { font-size: 38px; font-weight: 750; letter-spacing: -.01em; line-height: 1.2; }
-  h1 .latin {
-    font-family: var(--mono);
-    font-size: 15px; font-weight: 400;
-    color: var(--faint);
-    letter-spacing: 0;
-    white-space: nowrap;
-  }
-  .lead {
-    margin-top: 14px;
-    font-size: 16px;
-    color: var(--body);
-    max-width: 34em;
-  }
-  .now {
-    display: inline-flex; align-items: center; gap: 8px;
-    margin-top: 18px;
-    background: var(--tint);
-    border: 1px solid #e0e7ff;
-    border-radius: 999px;
-    padding: 5px 14px;
-    font-size: 13.5px;
-    color: #3730a3;
-  }
-  .now .dot {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 0 3px rgba(79,70,229,.15);
-  }
-  .stack { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
-  .stack span {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--muted);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 2px 9px;
-    background: rgba(255,255,255,.7);
-  }
-  .contact {
-    margin-top: 20px;
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--muted);
-    display: flex; flex-wrap: wrap; align-items: center;
-  }
-  .contact > * + *::before { content: "·"; color: #d1d5db; margin: 0 9px; }
-  .cv {
-    display: inline-block;
-    margin-top: 22px;
-    font-family: var(--mono);
-    font-size: 13px;
-    letter-spacing: .04em;
-    color: var(--text);
-    border: 1px solid #cfd4de;
-    border-radius: 8px;
-    padding: 8px 18px;
-    background: rgba(255,255,255,.8);
-    transition: color .15s, border-color .15s, background .15s;
-  }
-  .cv:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; }
   .avatar {
-    width: 124px; height: 124px;
-    border-radius: 32px;
+    width: 88px; height: 88px;
+    border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
     border: 1px solid var(--line);
-    box-shadow: 0 8px 24px rgba(22,24,29,.10);
+  }
+  .profile h1 { font-size: 25px; font-weight: 650; letter-spacing: .01em; line-height: 1.35; }
+  .profile .role { color: var(--muted); font-size: 14.5px; margin-top: 1px; }
+  .contact {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 13.5px;
+    display: flex; flex-wrap: wrap; align-items: center;
+  }
+  .contact > * + *::before {
+    content: "·";
+    color: #d1d5db;
+    margin: 0 9px;
   }
 
-  /* ===== 区块 ===== */
-  main { padding-bottom: 56px; }
-  section { padding-top: 46px; }
+  /* ===== 区块标题 ===== */
+  section { padding-top: 44px; }
   h2 {
-    display: flex; align-items: baseline; gap: 12px;
-    font-size: 12px; font-weight: 600;
-    letter-spacing: .18em; text-transform: uppercase;
-    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--faint);
     padding-bottom: 10px;
     border-bottom: 1px solid var(--line);
     margin-bottom: 22px;
   }
-  h2 .num { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--accent); }
 
   /* ===== 条目：左时间 + 右内容 ===== */
   .entry {
-    position: relative;
     display: grid;
-    grid-template-columns: 138px 1fr;
+    grid-template-columns: 132px 1fr;
     gap: 24px;
-    padding-bottom: 25px;
+    padding-bottom: 24px;
   }
   .entry:last-child { padding-bottom: 0; }
-  .entry + .entry { border-top: 1px solid var(--line); padding-top: 25px; }
-  .entry::before {
-    content: "";
-    position: absolute; left: -14px; top: 8px; bottom: 8px;
-    width: 2px; border-radius: 2px;
-    background: var(--accent);
-    opacity: 0;
-    transition: opacity .18s;
-  }
-  .entry:hover::before { opacity: .8; }
-  .when {
-    font-family: var(--mono);
-    color: var(--faint);
-    font-size: 12.5px;
-    letter-spacing: .02em;
-    padding-top: 3px;
-    transition: color .18s;
-  }
-  .entry:hover .when { color: var(--accent); }
-  .entry h3 { font-size: 15.5px; font-weight: 650; line-height: 1.55; }
+  .entry + .entry { border-top: 1px solid var(--line); padding-top: 24px; }
+  .when { color: var(--faint); font-size: 13px; padding-top: 2px; }
+  .entry h3 { font-size: 15px; font-weight: 650; line-height: 1.55; }
   .entry h3 .role-text { font-weight: 400; color: var(--muted); }
   .focus { color: var(--muted); font-size: 13.5px; margin-top: 2px; }
   .entry ul { margin-top: 9px; list-style: none; }
@@ -209,12 +118,14 @@
     margin-bottom: 6px;
     font-size: 14.5px;
     line-height: 1.72;
-    color: var(--body);
+    color: #3f4653;
   }
   .entry li::before {
     content: "";
-    position: absolute; left: 0; top: .68em;
-    width: 3px; height: 3px; border-radius: 50%;
+    position: absolute;
+    left: 0; top: .68em;
+    width: 3px; height: 3px;
+    border-radius: 50%;
     background: #c9ced6;
   }
   .entry li:last-child { margin-bottom: 0; }
@@ -222,43 +133,39 @@
   /* ===== 技能 ===== */
   .skill-row {
     display: grid;
-    grid-template-columns: 138px 1fr;
+    grid-template-columns: 132px 1fr;
     gap: 24px;
     padding: 11px 0;
     border-top: 1px solid var(--line);
     font-size: 14.5px;
   }
   .skill-row:last-child { border-bottom: 1px solid var(--line); }
-  .skill-label {
-    font-family: var(--mono);
-    color: var(--faint);
-    font-size: 12.5px;
-    letter-spacing: .02em;
-    padding-top: 2px;
-  }
-  .skill-value { color: var(--body); line-height: 1.72; }
+  .skill-label { color: var(--faint); font-size: 13px; padding-top: 2px; }
+  .skill-value { color: #3f4653; line-height: 1.72; }
 
   /* ===== 自我评价 ===== */
-  .summary { font-size: 14.5px; color: var(--body); line-height: 1.85; }
+  .summary { font-size: 14.5px; color: #3f4653; line-height: 1.85; }
+  .download {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 13.5px;
+    color: var(--accent);
+  }
 
   footer {
-    max-width: 780px; margin: 0 auto;
-    padding: 22px 26px 52px;
+    max-width: 720px; margin: 0 auto;
+    padding: 24px 26px 56px;
     border-top: 1px solid var(--line);
     color: var(--faint);
-    font-family: var(--mono);
-    font-size: 12px;
+    font-size: 12.5px;
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
   }
-  footer a { color: var(--muted); }
-  footer a:hover { color: var(--accent); }
 
-  @media (max-width: 640px) {
+  @media (max-width: 620px) {
     .topbar-inner, .wrap, footer { padding-left: 18px; padding-right: 18px; }
-    .hero-grid { flex-direction: column-reverse; align-items: flex-start; gap: 22px; padding-top: 34px; padding-bottom: 28px; }
-    .avatar { width: 96px; height: 96px; border-radius: 26px; }
-    h1 { font-size: 30px; }
-    .entry::before { display: none; }
+    .profile { gap: 16px; padding: 32px 0 24px; }
+    .avatar { width: 72px; height: 72px; }
+    .profile h1 { font-size: 21px; }
     .entry, .skill-row { grid-template-columns: 1fr; gap: 3px; }
     .when { padding-top: 0; }
     section { padding-top: 34px; }
@@ -266,11 +173,8 @@
     .entry + .entry { padding-top: 20px; }
   }
   @media print {
-    .topbar, .cv, footer, .now { display: none; }
-    body { border-top: none; }
-    .hero::before { display: none; }
-    .hero-grid { padding-top: 8px; padding-bottom: 12px; }
-    main { padding-bottom: 0; }
+    .topbar, .download, footer { display: none; }
+    .wrap { padding-bottom: 0; }
     section { padding-top: 18px; }
     h2 { margin-bottom: 14px; }
     .entry { padding-bottom: 13px; }
@@ -283,46 +187,28 @@
 
 <div class="topbar">
   <div class="topbar-inner">
-    <span class="topbar-name"><span class="slash">~/</span><span data-zh="杨浩然" data-en="haoran-yang">杨浩然</span></span>
+    <span class="topbar-name" data-zh="杨浩然" data-en="Haoran Yang">杨浩然</span>
     <button class="lang-btn" id="langToggle" aria-label="Switch language">EN</button>
   </div>
 </div>
 
-<header class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-text">
-      <p class="kicker" data-zh="软件工程 · 人工智能 · 自动驾驶"
-         data-en="SOFTWARE · AI · AUTONOMOUS DRIVING">软件工程 · 人工智能 · 自动驾驶</p>
-      <h1><span data-zh="杨浩然" data-en="Haoran Yang">杨浩然</span>
-          <span class="latin" data-zh="/ Haoran Yang" data-en="/ 杨浩然">/ Haoran Yang</span></h1>
-      <p class="lead"
-         data-zh="自动驾驶 Infra × 大模型工程化 —— 把算法落地成稳定、高效、能真正跑起来的系统。"
-         data-en="Autonomous-driving Infra × LLM engineering — turning algorithms into systems that run reliably in the real world.">自动驾驶 Infra × 大模型工程化 —— 把算法落地成稳定、高效、能真正跑起来的系统。</p>
-      <div class="now">
-        <span class="dot"></span>
-        <span data-zh="香港大学人工智能硕士在读 · 2026/09 入学"
-              data-en="MSc in AI at HKU · started Sep 2026">香港大学人工智能硕士在读 · 2026/09 入学</span>
-      </div>
-      <div class="stack">
-        <span>C++</span><span>Go</span><span>Python</span><span>ROS 2</span><span>gRPC</span><span>PyTorch</span><span>LLM</span>
-      </div>
+<div class="wrap">
+
+  <div class="profile">
+    <img class="avatar" src="avatar.jpg" alt="杨浩然 / Haoran Yang">
+    <div>
+      <h1 data-zh="杨浩然" data-en="Haoran Yang">杨浩然</h1>
+      <p class="role" data-zh="AI 算法 · 软件开发" data-en="AI Algorithms · Software Development">AI 算法 · 软件开发</p>
       <div class="contact">
-        <a href="tel:18328377179">18328377179</a>
+        <a class="tel" href="tel:18328377179">18328377179</a>
         <a href="mailto:youn_hr@126.com">youn_hr@126.com</a>
         <span data-zh="上海" data-en="Shanghai, China">上海</span>
       </div>
-      <a class="cv" href="yangahoran.pdf" download>
-        <span data-zh="下载简历 ↓" data-en="RESUME ↓">下载简历 ↓</span>
-      </a>
     </div>
-    <img class="avatar" src="avatar.jpg" alt="杨浩然 / Haoran Yang">
   </div>
-</header>
-
-<main class="wrap">
 
   <section id="education">
-    <h2><span class="num">01</span><span data-zh="教育背景" data-en="Education">教育背景</span></h2>
+    <h2 data-zh="教育背景" data-en="Education">教育背景</h2>
 
     <div class="entry">
       <div class="when" data-zh="2026/09 – 至今" data-en="2026/09 – Present">2026/09 – 至今</div>
@@ -347,7 +233,7 @@
   </section>
 
   <section id="experience">
-    <h2><span class="num">02</span><span data-zh="工作经验" data-en="Experience">工作经验</span></h2>
+    <h2 data-zh="工作经验" data-en="Experience">工作经验</h2>
 
     <div class="entry">
       <div class="when">2026/06 – 2026/08</div>
@@ -397,10 +283,10 @@
   </section>
 
   <section id="projects">
-    <h2><span class="num">03</span><span data-zh="项目经历" data-en="Projects">项目经历</span></h2>
+    <h2 data-zh="项目经历" data-en="Projects">项目经历</h2>
 
     <div class="entry">
-      <div class="when" data-zh="核心开发" data-en="Core Dev">核心开发</div>
+      <div class="when" data-zh="核心开发" data-en="Core Developer">核心开发</div>
       <div>
         <h3><span data-zh="WeTalk — 基于 C++ 的全栈分布式即时通讯系统" data-en="WeTalk — Full-stack Distributed IM System in C++">WeTalk — 基于 C++ 的全栈分布式即时通讯系统</span></h3>
         <ul>
@@ -417,7 +303,7 @@
     </div>
 
     <div class="entry">
-      <div class="when" data-zh="核心开发" data-en="Core Dev">核心开发</div>
+      <div class="when" data-zh="核心开发" data-en="Core Developer">核心开发</div>
       <div>
         <h3><span data-zh="基于 Go 的轻量级后端框架" data-en="Lightweight Backend Framework in Go">基于 Go 的轻量级后端框架</span></h3>
         <ul>
@@ -431,7 +317,7 @@
   </section>
 
   <section id="skills">
-    <h2><span class="num">04</span><span data-zh="专业技能" data-en="Skills">专业技能</span></h2>
+    <h2 data-zh="专业技能" data-en="Skills">专业技能</h2>
     <div class="skill-row">
       <div class="skill-label" data-zh="AI / 大模型" data-en="AI / LLM">AI / 大模型</div>
       <div class="skill-value" data-zh="模型后训练（post-training）、数据挖掘与数据集构建、LangChain、LlamaCpp、ONNX 推理框架，PyTorch / TensorFlow"
@@ -455,18 +341,20 @@
   </section>
 
   <section id="summary">
-    <h2><span class="num">05</span><span data-zh="自我评价" data-en="Summary">自我评价</span></h2>
+    <h2 data-zh="自我评价" data-en="Summary">自我评价</h2>
     <p class="summary"
        data-zh="具备自动驾驶模型后训练与数据挖掘的工程实践，拥有扎实的 C++/Python/Go 开发功底；具备算法工程化、模块化重构、系统性能优化的实操能力，熟练掌握后端开发核心技术、主流通信协议与工程化工具，能独立完成后端模块、轻量级框架及 Infra 系统的开发、部署与问题排查。"
        data-en="Hands-on experience in autonomous-driving model post-training and data mining, with a solid C++/Python/Go engineering foundation. Skilled at algorithm engineering, modular refactoring and system performance optimization, and proficient in core backend technologies, mainstream communication protocols and engineering tooling — able to independently develop, deploy and troubleshoot backend modules, lightweight frameworks and Infra systems.">具备自动驾驶模型后训练与数据挖掘的工程实践，拥有扎实的 C++/Python/Go 开发功底；具备算法工程化、模块化重构、系统性能优化的实操能力，熟练掌握后端开发核心技术、主流通信协议与工程化工具，能独立完成后端模块、轻量级框架及 Infra 系统的开发、部署与问题排查。</p>
+    <a class="download" href="yangahoran.pdf" download>
+      <span data-zh="下载简历 PDF ↓" data-en="Download Resume (PDF) ↓">下载简历 PDF ↓</span>
+    </a>
   </section>
 
-</main>
+</div>
 
 <footer>
-  <span>© 2026 <span data-zh="杨浩然" data-en="Haoran Yang">杨浩然</span> ·
-    <span data-zh="最近更新" data-en="Updated">最近更新</span> 2026-09-11</span>
-  <a href="https://github.com/hryang1130" target="_blank" rel="noopener">github.com/hryang1130</a>
+  <span>© 2026 <span data-zh="杨浩然" data-en="Haoran Yang">杨浩然</span></span>
+  <span><a href="mailto:youn_hr@126.com">youn_hr@126.com</a></span>
 </footer>
 
 <script>
