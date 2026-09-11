@@ -4,205 +4,380 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>杨浩然 | Haoran Yang</title>
-<meta name="description" content="杨浩然 - AI 算法 / 软件开发. 香港大学人工智能硕士在读, 自动驾驶模型后训练与数据挖掘. C++ / Python.">
+<meta name="description" content="杨浩然（Haoran Yang）— 香港大学人工智能硕士在读，模型后训练与数据挖掘、系统 Infra 方向，C++ / Python 工程开发。">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="杨浩然 | Haoran Yang">
+<meta property="og:description" content="香港大学人工智能硕士在读 · 模型后训练 / 系统 Infra · C++ / Python">
+<meta property="og:url" content="https://hryang1130.github.io/">
+<meta property="og:image" content="https://hryang1130.github.io/avatar.jpg">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#11151b" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <style>
   :root {
-    --text: #1f2328;
-    --muted: #6b7280;
-    --faint: #9ca3af;
-    --line: #e8eaed;
-    --accent: #2f5fd0;
-    --bg: #ffffff;
+    color-scheme: light;
+
+    /* ===== 字体：拉丁用旧体衬线，中文用宋体系 ===== */
+    --serif: "Palatino Linotype", Palatino, "Book Antiqua", "Iowan Old Style", Georgia,
+             "Songti SC", "Source Han Serif SC", "Noto Serif CJK SC", "SimSun", "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+            "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+
+    /* ===== 墨与纸 ===== */
+--text: #15181d;
+--body: #323841;
+--muted: #666d78;
+--faint: #949aa4;
+--line: #e5e9ef;
+--line-soft: #eef1f6;
+--accent: #1f3a5f;
+--bg: #ffffff;
+    --surface: #ffffff;
+--bar: rgba(255,255,255,.90);
+--panel-bg: linear-gradient(152deg,#f3f6fb 0%,#fbfcff 58%,#f2f5fa 100%);
+--panel-line: #e4e9f1;
+    --avatar-ring: #ffffff;
+--avatar-shadow: 0 3px 12px rgba(30,45,70,.12);
+--dot: #c3c9d2;
+--sep: #d2d7de;
+--sel: #dfe6f0;
+--btn-hover-bg: #f4f6fa;
+--btn-hover-line: #cfd8e6;
+    --col: 128px;
+    --gap: 22px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
-      "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    font-family: var(--sans);
     background: var(--bg);
     color: var(--text);
-    line-height: 1.75;
+    line-height: 1.78;
     font-size: 15px;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
   a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
+  a:hover { text-decoration: underline; text-underline-offset: 2px; }
+  ::selection { background: var(--sel); }
 
   /* ===== 顶部条 ===== */
   .topbar {
     position: sticky; top: 0; z-index: 10;
-    background: rgba(255,255,255,.9);
-    backdrop-filter: blur(8px);
+    background: var(--bar);
+    backdrop-filter: saturate(180%) blur(10px);
+    -webkit-backdrop-filter: saturate(180%) blur(10px);
     border-bottom: 1px solid var(--line);
   }
   .topbar-inner {
     max-width: 720px; margin: 0 auto;
-    padding: 14px 26px;
-    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 26px; height: 54px;
+    display: flex; align-items: center; gap: 16px;
   }
-  .topbar-name { font-size: 13.5px; font-weight: 600; letter-spacing: .05em; }
-  .lang-btn {
-    background: none;
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    color: var(--muted);
-    font-size: 12.5px;
-    font-family: inherit;
-    letter-spacing: .04em;
-    padding: 3px 12px;
-    cursor: pointer;
-    transition: color .15s, border-color .15s;
+  .brand {
+    font-family: var(--serif);
+    font-size: 15px; font-weight: 600;
+    letter-spacing: .02em; color: var(--text);
+    margin-right: auto; white-space: nowrap;
   }
-  .lang-btn:hover { color: var(--accent); border-color: #c7d2fe; }
+  .brand:hover { text-decoration: none; color: var(--accent); }
+  .nav { display: flex; gap: 16px; }
+  .nav a {
+    font-family: var(--serif);
+    font-size: 13px; letter-spacing: .02em;
+    color: var(--muted); white-space: nowrap;
+  }
+  .nav a:hover { color: var(--accent); text-decoration: none; }
+  .topbar-actions { display: flex; align-items: center; gap: 8px; }
+  .mini-btn {
+    font-family: var(--serif); font-size: 12.5px; letter-spacing: .02em;
+    color: var(--muted); background: var(--surface);
+    border: 1px solid var(--line); border-radius: 5px;
+    padding: 4px 10px; line-height: 1.4; cursor: pointer;
+    white-space: nowrap;
+    transition: color .15s, border-color .15s, background .15s;
+  }
+  .mini-btn:hover {
+    color: var(--accent); border-color: var(--btn-hover-line);
+    background: var(--btn-hover-bg); text-decoration: none;
+  }
+  .mini-btn.icon-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 28px; padding: 0;
+  }
+  .icon-btn svg {
+    width: 15px; height: 15px;
+    fill: none; stroke: currentColor; stroke-width: 1.7;
+    stroke-linecap: round; stroke-linejoin: round;
+  }
+  .icon-btn .i-sun { display: none; }
+  [data-theme="dark"] .icon-btn .i-sun { display: block; }
+  [data-theme="dark"] .icon-btn .i-moon { display: none; }
 
-  .wrap { max-width: 720px; margin: 0 auto; padding: 0 26px 64px; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 26px 72px; }
 
-  /* ===== 个人信息 ===== */
+  /* ===== 个人信息（纸感面板 + 式样证件照） ===== */
   .profile {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 44px 0 32px;
+    display: flex; align-items: center; gap: 24px;
+    padding: 30px;
+    margin-top: 32px;
+    border-radius: 12px;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-line);
   }
   .avatar {
-    width: 88px; height: 88px;
-    border-radius: 50%;
+    width: 96px; height: 96px;
+    border-radius: 8px;
     object-fit: cover;
     flex-shrink: 0;
-    border: 1px solid var(--line);
+    border: 4px solid var(--avatar-ring);
+    box-shadow: var(--avatar-shadow);
   }
-  .profile h1 { font-size: 25px; font-weight: 650; letter-spacing: .01em; line-height: 1.35; }
-  .profile .role { color: var(--muted); font-size: 14.5px; margin-top: 1px; }
+  .profile-main { min-width: 0; }
+  .profile h1 {
+    font-family: var(--serif);
+    font-size: 30px; font-weight: 600;
+    letter-spacing: .01em; line-height: 1.25;
+  }
+  .role { color: var(--muted); font-size: 14px; margin-top: 6px; }
   .contact {
-    margin-top: 10px;
+    margin-top: 13px;
     color: var(--muted);
     font-size: 13.5px;
     display: flex; flex-wrap: wrap; align-items: center;
   }
   .contact > * + *::before {
     content: "·";
-    color: #d1d5db;
+    color: var(--sep);
     margin: 0 9px;
   }
 
-  /* ===== 区块标题 ===== */
-  section { padding-top: 44px; }
+  /* ===== 区块标题（小型大写 + 细分隔线） ===== */
+  section { --hue: var(--accent); padding-top: 46px; scroll-margin-top: 66px; }
   h2 {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: var(--faint);
-    padding-bottom: 10px;
+    display: flex; align-items: center; gap: 10px;
+    font-family: var(--serif);
+    font-size: 15px; font-weight: 600;
+    font-variant-caps: small-caps;
+    letter-spacing: .08em;
+    color: var(--text);
+    padding-bottom: 9px;
     border-bottom: 1px solid var(--line);
-    margin-bottom: 22px;
+    margin-bottom: 24px;
+  }
+  h2::before {
+    content: "";
+    width: 6px; height: 6px;
+    background: var(--hue);
+    transform: rotate(45deg);
+    flex: 0 0 auto;
   }
 
   /* ===== 条目：左时间 + 右内容 ===== */
   .entry {
     display: grid;
-    grid-template-columns: 132px 1fr;
-    gap: 24px;
-    padding-bottom: 24px;
+    grid-template-columns: var(--col) 1fr;
+    column-gap: var(--gap);
+    padding-bottom: 26px;
   }
   .entry:last-child { padding-bottom: 0; }
-  .entry + .entry { border-top: 1px solid var(--line); padding-top: 24px; }
-  .when { color: var(--faint); font-size: 13px; padding-top: 2px; }
-  .entry h3 { font-size: 15px; font-weight: 650; line-height: 1.55; }
-  .entry h3 .role-text { font-weight: 400; color: var(--muted); }
-  .focus { color: var(--muted); font-size: 13.5px; margin-top: 2px; }
-  .entry ul { margin-top: 9px; list-style: none; }
+  .entry + .entry { border-top: 1px solid var(--line-soft); padding-top: 26px; }
+  .when {
+    justify-self: start; align-self: start;
+    font-family: var(--serif);
+    font-size: 13px; line-height: 1.5;
+    color: var(--hue);
+    font-variant-numeric: tabular-nums lining-nums;
+    letter-spacing: .01em;
+    white-space: nowrap;
+  }
+  .entry h3 {
+    font-family: var(--serif);
+    font-size: 16px; font-weight: 600; line-height: 1.5;
+  }
+  .entry h3 .role-text {
+    font-family: var(--sans);
+    font-weight: 400; font-size: 14px; color: var(--muted);
+  }
+  .focus { color: var(--muted); font-size: 13.5px; margin-top: 4px; }
+  .entry ul { margin-top: 10px; list-style: none; }
   .entry li {
     position: relative;
-    padding-left: 14px;
-    margin-bottom: 6px;
+    padding-left: 16px;
+    margin-bottom: 7px;
     font-size: 14.5px;
-    line-height: 1.72;
-    color: #3f4653;
+    line-height: 1.75;
+    color: var(--body);
   }
   .entry li::before {
     content: "";
     position: absolute;
-    left: 0; top: .68em;
-    width: 3px; height: 3px;
+    left: 2px; top: .66em;
+    width: 4px; height: 4px;
     border-radius: 50%;
-    background: #c9ced6;
+    background: color-mix(in srgb, var(--hue) 45%, transparent);
   }
   .entry li:last-child { margin-bottom: 0; }
 
   /* ===== 技能 ===== */
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 24px; }
+  .chip {
+    font-size: 12.5px; line-height: 1;
+    padding: 6px 10px;
+    border-radius: 4px;
+    color: var(--muted);
+    background: color-mix(in srgb, var(--hue) 5%, transparent);
+    border: 1px solid color-mix(in srgb, var(--hue) 15%, transparent);
+  }
   .skill-row {
     display: grid;
-    grid-template-columns: 132px 1fr;
-    gap: 24px;
-    padding: 11px 0;
-    border-top: 1px solid var(--line);
+    grid-template-columns: var(--col) 1fr;
+    column-gap: var(--gap);
+    padding: 12px 0;
+    border-top: 1px solid var(--line-soft);
     font-size: 14.5px;
   }
-  .skill-row:last-child { border-bottom: 1px solid var(--line); }
-  .skill-label { color: var(--faint); font-size: 13px; padding-top: 2px; }
-  .skill-value { color: #3f4653; line-height: 1.72; }
+  .skill-row:last-child { border-bottom: 1px solid var(--line-soft); }
+  .skill-label {
+    font-family: var(--serif);
+    color: var(--faint); font-size: 13.5px; line-height: 1.7; padding-top: 1px;
+  }
+  .skill-value { color: var(--body); line-height: 1.7; }
+  .skill-value .ln { display: block; }
+  .skill-value .ln + .ln { margin-top: 3px; }
 
   /* ===== 自我评价 ===== */
-  .summary { font-size: 14.5px; color: #3f4653; line-height: 1.85; }
-  .download {
-    display: inline-block;
-    margin-top: 20px;
-    font-size: 13.5px;
-    color: var(--accent);
+  .summary {
+    font-size: 14.5px; color: var(--body); line-height: 1.9;
+    padding-left: 16px;
+    border-left: 2px solid color-mix(in srgb, var(--hue) 45%, transparent);
   }
 
   footer {
     max-width: 720px; margin: 0 auto;
-    padding: 24px 26px 56px;
+    padding: 22px 26px 56px;
     border-top: 1px solid var(--line);
     color: var(--faint);
+    font-family: var(--serif);
     font-size: 12.5px;
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
   }
 
+  /* ===== 深色模式（按钮切换） ===== */
+  [data-theme="dark"] {
+    color-scheme: dark;
+    --text: #e7ebf1;
+    --body: #b9c1cd;
+    --muted: #98a1ae;
+    --faint: #79828f;
+    --line: #262c36;
+    --line-soft: #1d222b;
+    --accent: #a3bcda;
+    --bg: #11151b;
+    --surface: #181d24;
+    --bar: rgba(17,21,27,.88);
+    --panel-bg: linear-gradient(152deg, #1a212b 0%, #141920 58%, #192029 100%);
+    --panel-line: #262e3a;
+    --avatar-ring: #1d232c;
+    --avatar-shadow: 0 3px 12px rgba(0,0,0,.5);
+    --dot: #46505e;
+    --sep: #363e4a;
+    --sel: #26364f;
+    --btn-hover-bg: #1b222c;
+    --btn-hover-line: #3b4d6b;
+  }
+
+  @media (max-width: 680px) {
+    .nav { display: none; }
+  }
   @media (max-width: 620px) {
     .topbar-inner, .wrap, footer { padding-left: 18px; padding-right: 18px; }
-    .profile { gap: 16px; padding: 32px 0 24px; }
-    .avatar { width: 72px; height: 72px; }
-    .profile h1 { font-size: 21px; }
-    .entry, .skill-row { grid-template-columns: 1fr; gap: 3px; }
-    .when { padding-top: 0; }
-    section { padding-top: 34px; }
-    .entry { padding-bottom: 20px; }
-    .entry + .entry { padding-top: 20px; }
+    .profile { gap: 16px; padding: 22px 20px; margin-top: 20px; border-radius: 10px; }
+    .avatar { width: 78px; height: 78px; }
+    .profile h1 { font-size: 24px; }
+    .entry, .skill-row { grid-template-columns: 1fr; row-gap: 5px; }
+    section { padding-top: 38px; scroll-margin-top: 56px; }
+    .entry { padding-bottom: 22px; }
+    .entry + .entry { padding-top: 22px; }
   }
   @media print {
-    .topbar, .download, footer { display: none; }
-    .wrap { padding-bottom: 0; }
-    section { padding-top: 18px; }
-    h2 { margin-bottom: 14px; }
+    :root, :root[data-theme] {
+      color-scheme: light;
+      --text: #111418; --body: #23272e; --muted: #4b5361; --faint: #6d7482;
+      --line: #dcdfe4; --line-soft: #eceef1;
+      --bg: #ffffff; --surface: #ffffff; --accent: #1f3a5f;
+      --panel-bg: none; --panel-line: transparent;
+      --avatar-ring: #ffffff; --avatar-shadow: none;
+      --dot: #b9bec7; --sep: #cfd3d9;
+    }
+    html { scroll-behavior: auto; }
+    .topbar, footer { display: none; }
+    body { font-size: 12px; line-height: 1.6; }
+    .wrap { max-width: none; padding: 0; }
+    .profile { padding: 0 0 16px; gap: 16px; margin-top: 0; border: none; border-radius: 0; }
+    .avatar { width: 62px; height: 62px; border-width: 1px; }
+    .profile h1 { font-size: 21px; }
+    section { padding-top: 20px; }
+    h2 { margin-bottom: 12px; padding-bottom: 6px; }
     .entry { padding-bottom: 13px; }
     .entry + .entry { padding-top: 13px; }
-    body { font-size: 12.5px; }
+    .entry li { margin-bottom: 4px; }
+    .chips { margin-bottom: 14px; }
+    a { color: var(--text); }
   }
 </style>
+<script>
+  (function () {
+    var t = 'light';
+    try {
+      t = localStorage.getItem('theme') || '';
+      if (t !== 'light' && t !== 'dark') {
+        t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+      }
+    } catch (e) {}
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
 </head>
 <body>
 
 <div class="topbar">
   <div class="topbar-inner">
-    <span class="topbar-name" data-zh="杨浩然" data-en="Haoran Yang">杨浩然</span>
-    <button class="lang-btn" id="langToggle" aria-label="Switch language">EN</button>
+    <a class="brand" href="#top" data-zh="杨浩然" data-en="Haoran Yang">杨浩然</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#education" data-zh="教育" data-en="Education">教育</a>
+      <a href="#experience" data-zh="工作" data-en="Experience">工作</a>
+      <a href="#projects" data-zh="项目" data-en="Projects">项目</a>
+      <a href="#skills" data-zh="技能" data-en="Skills">技能</a>
+      <a href="#summary" data-zh="评价" data-en="Summary">评价</a>
+    </nav>
+    <div class="topbar-actions">
+      <a class="mini-btn" href="yangahoran.pdf" download title="Resume PDF — 简历 PDF">
+        <span data-zh="简历 PDF" data-en="Resume PDF">简历 PDF</span>
+      </a>
+      <button class="mini-btn icon-btn" id="themeToggle" aria-label="切换深浅色" title="切换深浅色">
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.6 14.4A8.8 8.8 0 0 1 9.6 3.4a7 7 0 1 0 11 11z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.6v2.3M12 19.1v2.3M2.6 12h2.3M19.1 12h2.3M5.3 5.3l1.7 1.7M17 17l1.7 1.7M18.7 5.3L17 7M7 17l-1.7 1.7"/></svg>
+      </button>
+      <button class="mini-btn" id="langToggle" aria-label="Switch language">EN</button>
+    </div>
   </div>
 </div>
 
-<div class="wrap">
+<div class="wrap" id="top">
 
   <div class="profile">
     <img class="avatar" src="avatar.jpg" alt="杨浩然 / Haoran Yang">
-    <div>
+    <div class="profile-main">
       <h1 data-zh="杨浩然" data-en="Haoran Yang">杨浩然</h1>
-      <p class="role" data-zh="AI 算法 · 软件开发" data-en="AI Algorithms · Software Development">AI 算法 · 软件开发</p>
+      <p class="role" data-zh="求职意向：AI 算法 · 软件开发"
+         data-en="Target role: AI Algorithms · Software Development">求职意向：AI 算法 · 软件开发</p>
       <div class="contact">
-        <a class="tel" href="tel:18328377179">18328377179</a>
+        <a href="tel:18328377179">18328377179</a>
         <a href="mailto:youn_hr@126.com">youn_hr@126.com</a>
         <span data-zh="上海" data-en="Shanghai, China">上海</span>
+        <a href="https://github.com/hryang1130" target="_blank" rel="noopener">github.com/hryang1130</a>
       </div>
     </div>
   </div>
@@ -277,6 +452,8 @@
       <div class="when">2023/07 – 2024/07</div>
       <div>
         <h3><span data-zh="上海宇量昇科技有限公司" data-en="Shanghai Yuliangsheng Technology Co., Ltd.">上海宇量昇科技有限公司</span> <span class="role-text" data-zh="软件工程师" data-en="Software Engineer">软件工程师</span></h3>
+        <p class="focus" data-zh="高精度计算模块 · 算法工程化 · 性能优化"
+           data-en="High-precision computing · Algorithm engineering · Performance">高精度计算模块 · 算法工程化 · 性能优化</p>
         <ul>
           <li data-zh="负责高精度计算模块的算法工程化开发，将算法逻辑转化为可落地的工程代码，实现模块实际业务应用"
               data-en="Led production engineering of high-precision computing modules, translating algorithm logic into deployable code.">负责高精度计算模块的算法工程化开发，将算法逻辑转化为可落地的工程代码，实现模块实际业务应用</li>
@@ -294,6 +471,8 @@
       <div class="when" data-zh="核心开发" data-en="Core Developer">核心开发</div>
       <div>
         <h3><span data-zh="WeTalk — 基于 C++ 的全栈分布式即时通讯系统" data-en="WeTalk — Full-stack Distributed IM System in C++">WeTalk — 基于 C++ 的全栈分布式即时通讯系统</span></h3>
+        <p class="focus" data-zh="QT · gRPC · Boost · Asio · 高并发长连接"
+           data-en="Qt · gRPC · Boost · Asio · High-concurrency long connections">QT · gRPC · Boost · Asio · 高并发长连接</p>
         <ul>
           <li data-zh="负责 DispatchServer 网关开发，提供 HTTP 接口实现登录注册，通过 gRPC 完成服务分发与认证"
               data-en="Developed the DispatchServer gateway: HTTP APIs for login/registration, gRPC for service dispatch and authentication.">负责 DispatchServer 网关开发，提供 HTTP 接口实现登录注册，通过 gRPC 完成服务分发与认证</li>
@@ -301,8 +480,6 @@
               data-en="Implemented asynchronous TCP long-connection communication based on Asio, with pooled io_context for higher concurrency.">基于 Asio 实现 TCP 长连接异步通信，池化 io_context 提升系统并发能力</li>
           <li data-zh="完成 QT 客户端开发与服务端模块化设计，支持分布式部署，实现状态管理与认证服务解耦"
               data-en="Built the Qt client and modular server design supporting distributed deployment, decoupling state management from authentication.">完成 QT 客户端开发与服务端模块化设计，支持分布式部署，实现状态管理与认证服务解耦</li>
-          <li data-zh="基于 QT、gRPC、Boost 的高可用、高并发全栈分布式即时通讯系统"
-              data-en="A highly available, highly concurrent full-stack distributed IM system on Qt, gRPC and Boost.">基于 QT、gRPC、Boost 的高可用、高并发全栈分布式即时通讯系统</li>
         </ul>
       </div>
     </div>
@@ -310,15 +487,48 @@
 
   <section id="skills">
     <h2 data-zh="专业技能" data-en="Skills">专业技能</h2>
+
+    <div class="chips">
+      <span class="chip">C++</span>
+      <span class="chip">Python</span>
+      <span class="chip">Go</span>
+      <span class="chip">PyTorch</span>
+      <span class="chip">ONNX</span>
+      <span class="chip">LangChain</span>
+      <span class="chip">gRPC</span>
+      <span class="chip">Protobuf</span>
+      <span class="chip">Asio</span>
+      <span class="chip">Qt</span>
+      <span class="chip">Boost</span>
+      <span class="chip">ROS / ROS2</span>
+      <span class="chip">CMake / Bazel</span>
+      <span class="chip">GDB / Valgrind</span>
+      <span class="chip">MySQL / Redis</span>
+      <span class="chip">Linux</span>
+      <span class="chip">Git</span>
+      <span class="chip" data-zh="多线程与并发" data-en="Multithreading">多线程与并发</span>
+      <span class="chip" data-zh="性能调优" data-en="Performance tuning">性能调优</span>
+    </div>
+
     <div class="skill-row">
       <div class="skill-label" data-zh="编程语言" data-en="Languages">编程语言</div>
-      <div class="skill-value" data-zh="C++：熟悉 C++11/17 新标准，OOP、泛型编程、STL、模板，掌握内存管理、多线程编程，了解 Boost 及 RTMP / SRT / ffmpeg 等流媒体框架；Python：熟悉 Flask / FastAPI 等框架，熟悉 PyTorch、OpenCV 等神经网络相关库，具备数据处理与脚本工程化能力；了解 Go（goroutine/channel、Gin）与 MySQL / Redis"
-           data-en="C++ — familiar with C++11/17, OOP, generic programming, STL and templates; solid on memory management and multithreading; familiar with Boost and streaming frameworks such as RTMP / SRT / ffmpeg. Python — familiar with Flask / FastAPI, PyTorch and OpenCV; capable of data processing and scripting. Also familiar with Go (goroutine/channel, Gin) and MySQL / Redis">C++：熟悉 C++11/17 新标准，OOP、泛型编程、STL、模板，掌握内存管理、多线程编程，了解 Boost 及 RTMP / SRT / ffmpeg 等流媒体框架；Python：熟悉 Flask / FastAPI 等框架，熟悉 PyTorch、OpenCV 等神经网络相关库，具备数据处理与脚本工程化能力；了解 Go（goroutine/channel、Gin）与 MySQL / Redis</div>
+      <div class="skill-value">
+        <span class="ln" data-zh="C++：熟悉 C++11/17 新标准、OOP、泛型编程、STL 与模板；掌握内存管理与多线程编程，了解 Boost 及 RTMP / SRT / ffmpeg 流媒体框架"
+              data-en="C++: familiar with C++11/17, OOP, generic programming, STL and templates; solid on memory management and multithreading; familiar with Boost and streaming frameworks such as RTMP / SRT / ffmpeg">C++：熟悉 C++11/17 新标准、OOP、泛型编程、STL 与模板；掌握内存管理与多线程编程，了解 Boost 及 RTMP / SRT / ffmpeg 流媒体框架</span>
+        <span class="ln" data-zh="Python：熟悉 Flask / FastAPI 框架与 PyTorch、OpenCV 等库，具备数据处理与脚本工程化能力"
+              data-en="Python: familiar with Flask / FastAPI, PyTorch and OpenCV; capable of data processing and scripting">Python：熟悉 Flask / FastAPI 框架与 PyTorch、OpenCV 等库，具备数据处理与脚本工程化能力</span>
+        <span class="ln" data-zh="其他：了解 Go（goroutine / channel、Gin）与 MySQL / Redis"
+              data-en="Also familiar with Go (goroutine / channel, Gin), MySQL / Redis">其他：了解 Go（goroutine / channel、Gin）与 MySQL / Redis</span>
+      </div>
     </div>
     <div class="skill-row">
       <div class="skill-label" data-zh="AI / 大模型" data-en="AI / LLM">AI / 大模型</div>
-      <div class="skill-value" data-zh="模型后训练（post-training）、数据挖掘与数据集构建、LangChain、LlamaCpp、ONNX 推理框架，PyTorch / TensorFlow"
-           data-en="Model post-training, data mining &amp; dataset construction, LangChain, LlamaCpp, ONNX inference frameworks, PyTorch / TensorFlow">模型后训练（post-training）、数据挖掘与数据集构建、LangChain、LlamaCpp、ONNX 推理框架，PyTorch / TensorFlow</div>
+      <div class="skill-value">
+        <span class="ln" data-zh="模型与数据：模型后训练（post-training）、数据挖掘与数据集构建"
+              data-en="Models &amp; data: model post-training, data mining and dataset construction">模型与数据：模型后训练（post-training）、数据挖掘与数据集构建</span>
+        <span class="ln" data-zh="框架与工具：PyTorch / TensorFlow、LangChain、LlamaCpp、ONNX 推理框架"
+              data-en="Frameworks: PyTorch / TensorFlow, LangChain, LlamaCpp, ONNX runtime">框架与工具：PyTorch / TensorFlow、LangChain、LlamaCpp、ONNX 推理框架</span>
+      </div>
     </div>
     <div class="skill-row">
       <div class="skill-label" data-zh="中间件与协议" data-en="Middleware">中间件与协议</div>
@@ -337,9 +547,6 @@
     <p class="summary"
        data-zh="具备自动驾驶模型后训练与数据挖掘的工程实践，以 C++ 与 Python 为主要开发语言、工程功底扎实；具备算法工程化、模块化重构、系统性能优化的实操能力，熟悉后端开发核心技术、主流通信协议与工程化工具，能独立完成后端模块与 Infra 系统的开发、部署与问题排查。"
        data-en="Hands-on experience in autonomous-driving model post-training and data mining, with C++ and Python as primary languages and a solid engineering foundation. Skilled at algorithm engineering, modular refactoring and system performance optimization, familiar with core backend technologies, mainstream communication protocols and engineering tooling — able to independently develop, deploy and troubleshoot backend modules and Infra systems.">具备自动驾驶模型后训练与数据挖掘的工程实践，以 C++ 与 Python 为主要开发语言、工程功底扎实；具备算法工程化、模块化重构、系统性能优化的实操能力，熟悉后端开发核心技术、主流通信协议与工程化工具，能独立完成后端模块与 Infra 系统的开发、部署与问题排查。</p>
-    <a class="download" href="yangahoran.pdf" download>
-      <span data-zh="下载简历 PDF ↓" data-en="Download Resume (PDF) ↓">下载简历 PDF ↓</span>
-    </a>
   </section>
 
 </div>
@@ -371,6 +578,27 @@
 
   btn.addEventListener('click', function () {
     apply(document.documentElement.lang === 'zh-CN' ? 'en' : 'zh');
+  });
+
+  /* ---- 深浅色切换 ---- */
+  var root = document.documentElement;
+  var themeBtn = document.getElementById('themeToggle');
+  var LABEL = { light: '切换深色模式', dark: '切换浅色模式' };
+  var LABEL_EN = { light: 'Switch to dark mode', dark: 'Switch to light mode' };
+
+  function setTheme(t) {
+    root.setAttribute('data-theme', t);
+    var zh = document.documentElement.lang === 'zh-CN';
+    var text = (zh ? LABEL : LABEL_EN)[t];
+    themeBtn.setAttribute('aria-label', text);
+    themeBtn.setAttribute('title', text);
+    try { localStorage.setItem('theme', t); } catch (e) {}
+  }
+
+  setTheme(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+
+  themeBtn.addEventListener('click', function () {
+    setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
   });
 })();
 </script>
