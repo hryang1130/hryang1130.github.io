@@ -116,7 +116,7 @@
     border: 1px solid var(--panel-line);
   }
   .avatar {
-    width: 148px; height: auto; aspect-ratio: 5 / 7;
+    width: 176px; height: auto; aspect-ratio: 5 / 7;
     border-radius: 14px;
     object-fit: cover;
     flex-shrink: 0;
@@ -306,7 +306,7 @@
     body { font-size: 12px; line-height: 1.6; }
     .wrap { max-width: none; padding: 0; }
     .profile { padding: 0 0 16px; gap: 16px; margin-top: 0; border: none; border-radius: 0; }
-    .avatar { width: 62px; height: 62px; border-width: 1px; }
+    .avatar { width: 88px; height: auto; border-width: 1px; }
     .profile h1 { font-size: 21px; }
     section { padding-top: 20px; }
     h2 { margin-bottom: 12px; padding-bottom: 6px; }
@@ -336,7 +336,7 @@
   <div class="topbar-inner" data-page-node-id="C1mECtmcakjIehpqvmA5FI">
     <a class="brand" href="index.html" data-zh="← 返回主页" data-en="← Back Home" data-page-node-id="NEpZwVfr5cGOjwGV2zxqrJ">← 返回主页</a>
     <div class="topbar-actions" data-page-node-id="CcI8EPhlJo3iDq5ZKHUwpg">
-      <a class="mini-btn" href="杨浩然-简历-中文.pdf" download title="Resume PDF — 简历 PDF" data-page-node-id="byoXq4zplkG52mZSSJIuDi">
+      <a class="mini-btn" id="pdfBtn" href="杨浩然-简历-中文.pdf" download title="Resume PDF — 简历 PDF" data-page-node-id="byoXq4zplkG52mZSSJIuDi">
         <span data-zh="下载 PDF" data-en="Download PDF" data-page-node-id="1gpqRABBspCbvhFJCLeWmB">下载 PDF</span>
       </a>
       <button class="mini-btn icon-btn" id="themeToggle" aria-label="切换深浅色" title="切换深浅色" data-page-node-id="e3SPBVkLabUZ3h3YA5YiRk">
@@ -561,6 +561,8 @@
   var btn = document.getElementById('langToggle');
   var nodes = document.querySelectorAll('[data-zh]');
   var TITLE = { zh: '杨浩然 | 简历', en: 'Haoran Yang | Résumé' };
+  var pdfBtn = document.getElementById('pdfBtn');
+  var PDF = { zh: '杨浩然-简历-中文.pdf', en: 'Haoran-Yang-Resume-EN.pdf' };
 
   function apply(lang) {
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
@@ -569,11 +571,16 @@
     });
     document.title = TITLE[lang];
     btn.textContent = lang === 'zh' ? 'EN' : '中文';
+    if (pdfBtn) pdfBtn.setAttribute('href', PDF[lang]);
     try { localStorage.setItem('lang', lang); } catch (e) {}
   }
 
   var saved = 'zh';
   try { saved = localStorage.getItem('lang') || 'zh'; } catch (e) {}
+  try {
+    var qs = new URLSearchParams(window.location.search).get('lang');
+    if (qs === 'en' || qs === 'zh') saved = qs;
+  } catch (e) {}
   apply(saved);
 
   btn.addEventListener('click', function () {
