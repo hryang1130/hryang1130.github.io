@@ -121,6 +121,10 @@ window.SITE_CONTENT = {
     zh: "做这个项目是想把「模型训练」和「系统部署」两头的知识真正串起来——训练侧理解参数和数据怎么变成权重，部署侧理解权重怎么被量化、压缩、高效地对外服务。这也是我理解 LLM Infra 每个环节成本与瓶颈的方式。",
     en: "I built it to connect the two halves I care about — model training and systems deployment: on one side, how parameters and data become weights; on the other, how those weights get quantized, compressed, and served efficiently. It's my way of understanding the cost and bottlenecks of every stage of LLM Infra."
   },
+  "p2.tags": {
+    zh: "PyTorch · transformers · llama.cpp · GGUF 量化 · Go (Gin) · Docker Compose",
+    en: "PyTorch · transformers · llama.cpp · GGUF quantization · Go (Gin) · Docker Compose"
+  },
   "p1.title": {
     zh: "WeTalk — 分布式即时通讯系统",
     en: "WeTalk — Distributed IM System"
