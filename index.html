@@ -464,8 +464,12 @@
     try { localStorage.setItem('lang', lang); } catch (e) {}
   }
 
-  var saved = 'zh';
-  try { saved = localStorage.getItem('lang') || 'zh'; } catch (e) {}
+  var saved = 'en';
+  try { saved = localStorage.getItem('lang') || 'en'; } catch (e) {}
+  try {
+    var q = new URLSearchParams(location.search).get('lang');
+    if (q === 'en' || q === 'zh') saved = q;
+  } catch (e) {}
   apply(saved);
 
   btn.addEventListener('click', function () {
