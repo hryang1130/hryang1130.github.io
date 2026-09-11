@@ -30,8 +30,8 @@ window.SITE_CONTENT = {
     en: "Hi, I'm Haoran."
   },
   "hero.intro": {
-    zh: "现在在香港大学读人工智能硕士；在这之前，我在自动驾驶行业写了三年多的 C++/Python, 做了一些后端和系统Infra开发相关的工作。平时想事情的方式更像工程师：把问题拆小，把模块做稳，把性能量出来。",
-    en: "I'm now pursuing an MSc in Artificial Intelligence at the University of Hong Kong. Before that, I spent three-plus years writing C++/Python in the autonomous-driving industry, doing backend and systems Infra development. I tend to think like an engineer: break problems down, build modules that hold, and measure performance instead of guessing."
+    zh: "香港大学人工智能硕士在读，系统工程出身，最近正在做一些 AI Infra 和 Agent 应用开发相关的工作。在这之前，我在自动驾驶行业写了三年多的 C++/Python，做后端和系统 Infra 开发。平时想事情的方式更像工程师：把问题拆小，把模块做稳，把性能量出来。",
+    en: "MSc in Artificial Intelligence student at the University of Hong Kong, trained as a systems engineer, recently working on AI Infra and Agent application development. Before that, I spent three-plus years writing C++/Python in the autonomous-driving industry, building backend and systems Infra. I tend to think like an engineer: break problems down, build modules that hold, and measure performance instead of guessing."
   },
   "hero.location": {
     zh: "香港 · 上海",
@@ -41,16 +41,16 @@ window.SITE_CONTENT = {
   /* ---------- 关于我 ---------- */
   "about.title": { zh: "关于我", en: "About Me" },
   "about.p1": {
-    zh: "三年C++古法程序员。",
-    en: "Three years of writing C++ the old-school way."
+    zh: "三年C++古法程序员，最近在给 LLM 打下手。",
+    en: "Three years of old-school C++ — now taking orders from LLMs."
   },
   "about.p2": {
     zh: "过去几年我一直做「架构设计，让系统跑得稳、跑得快」这件事：在自动驾驶行业做自动驾驶车载 Infra，写类 ROS 框架上的后端模块、监控体系和中间件开发等；更早之前在上海做过一些高精度计算模块的算法工程化方面的工作。2026年及最近接触了模型后训练和数据挖掘方面的工作，算是从系统方向往 AI 方向迈的第一步。",
     en: "For the past few years I've been working on architecture design — making systems run reliably and fast: in the autonomous-driving industry I built onboard Infra, including backend modules on a ROS-like framework, monitoring systems, and middleware. Earlier in Shanghai I worked on engineering high-precision computing modules. In 2026 and recently I've been getting into model post-training and data mining — my first step from systems toward AI."
   },
   "about.p3": {
-    zh: "最近的模型训练数据挖掘相关的工作让我意识到，大模型不只是「更大的模型」：后训练、量化推理、数据质量、评测方法，每一个环节都是工程问题，也都是我感兴趣的问题。于是决定系统地把 AI 这个方向补齐。主力语言是 C++ 和 Python，我喜欢把复杂的问题拆成简单可靠的模块，也相信性能是可以被度量和持续改进的。",
-    en: "Recent work on model training and data mining made me realize that LLMs are not just 'bigger models': post-training, quantized inference, data quality, and evaluation are all engineering problems — and all problems I find interesting. So I decided to build up the AI side systematically. My main languages are C++ and Python. I like breaking complex problems into simple, reliable modules, and I believe performance is something you can measure and keep improving."
+    zh: "最近的模型训练数据挖掘相关的工作让我意识到，大模型不只是「更大的模型」：后训练、量化推理、数据质量、评测方法，每一个环节都是工程问题，也都是我感兴趣的问题。于是决定把 AI 这一层补到自己的系统栈上——大模型落地最缺的，恰恰是 Infra 的手艺。主力语言是 C++ 和 Python，我喜欢把复杂的问题拆成简单可靠的模块，也相信性能是可以被度量和持续改进的。",
+    en: "Recent work on model training and data mining made me realize that LLMs are not just 'bigger models': post-training, quantized inference, data quality, and evaluation are all engineering problems — and all problems I find interesting. So I decided to build the AI layer on top of my systems stack — what's missing most in bringing LLMs to production is precisely Infra craft. My main languages are C++ and Python. I like breaking complex problems into simple, reliable modules, and I believe performance is something you can measure and keep improving."
   },
 
   /* ---------- 经历（时间线） ---------- */
