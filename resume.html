@@ -304,6 +304,11 @@
   @media (min-width: 1400px) {
     .topbar-inner, .wrap, footer { max-width: 820px; }
   }
+  /* ===== 打印页面：显式 A4 + 页边距，任何导出路径都不再依赖打印对话框的默认值 ===== */
+  @page {
+    size: A4;
+    margin: 9mm 11mm 8mm;
+  }
   @media print {
     :root, :root[data-theme] {
       color-scheme: light;
@@ -316,17 +321,27 @@
     }
     html { scroll-behavior: auto; }
     .topbar, footer { display: none; }
-    body { font-size: 12px; line-height: 1.6; }
+    body { font-size: 11.5px; line-height: 1.35; }
     .wrap { max-width: none; padding: 0; }
-    .profile { padding: 0 0 16px; gap: 16px; margin-top: 0; border: none; border-radius: 0; }
-    .avatar { width: 88px; height: auto; border-width: 1px; }
-    .profile h1 { font-size: 21px; }
-    section { padding-top: 20px; }
-    h2 { margin-bottom: 12px; padding-bottom: 6px; }
-    .entry { padding-bottom: 13px; }
-    .entry + .entry { padding-top: 13px; }
-    .entry li { margin-bottom: 4px; }
-    .chips { margin-bottom: 14px; }
+    .profile { padding: 0 0 10px; gap: 14px; margin-top: 0; border: none; border-radius: 0; break-inside: avoid; }
+    .avatar { width: 84px; height: auto; border-width: 1px; }
+    .profile h1 { font-size: 20px; }
+    .role { margin-top: 3px; font-size: 13px; }
+    .contact { margin-top: 7px; font-size: 12.5px; }
+    section { padding-top: 4px; }
+    h2 { margin-bottom: 4px; padding-bottom: 3px; break-after: avoid; }
+    /* 条目本身允许跨页，避免整块跳到下一页留下大片空白；标题与单条 li 保持完整 */
+    .entry { padding-bottom: 3px; }
+    .entry + .entry { padding-top: 3px; }
+    .entry h3 { font-size: 14.5px; break-after: avoid; }
+    .entry li { margin-bottom: 1px; break-inside: avoid; }
+    .focus { margin-top: 1px; font-size: 12.5px; }
+    .chips { gap: 4px; margin-bottom: 5px; break-inside: avoid; }
+    .chip { font-size: 11px; padding: 3px 8px; }
+    .skill-row { padding: 2px 0; break-inside: avoid; }
+    .summary { font-size: 11.5px; line-height: 1.38; break-inside: avoid; }
+    /* 尽量保持段落/列表的可读性，不产生孤立单行 */
+    p, li { orphans: 2; widows: 2; }
     a { color: var(--text); }
   }
 </style>
@@ -493,10 +508,8 @@
         <ul data-page-node-id="GE5uqjtEznRLEjLTG3DCqk">
           <li data-zh="负责 DispatchServer 网关开发，提供 HTTP 接口实现登录注册，通过 gRPC 完成服务分发与认证"
               data-en="Developed the DispatchServer gateway: HTTP APIs for login/registration, gRPC for service dispatch and authentication." data-page-node-id="Gf1bdJfuZkqx7tHgSJgXNA">负责 DispatchServer 网关开发，提供 HTTP 接口实现登录注册，通过 gRPC 完成服务分发与认证</li>
-          <li data-zh="基于 Asio 实现 TCP 长连接异步通信，池化 io_context 提升系统并发能力"
-              data-en="Implemented asynchronous TCP long-connection communication based on Asio, with pooled io_context for higher concurrency." data-page-node-id="OJrW3zAtunYy21QLEqQ2aS">基于 Asio 实现 TCP 长连接异步通信，池化 io_context 提升系统并发能力</li>
-          <li data-zh="完成 QT 客户端开发与服务端模块化设计，支持分布式部署，实现状态管理与认证服务解耦"
-              data-en="Built the Qt client and modular server design supporting distributed deployment, decoupling state management from authentication." data-page-node-id="dqKcg8qtFdeOzBmvZygGyy">完成 QT 客户端开发与服务端模块化设计，支持分布式部署，实现状态管理与认证服务解耦</li>
+          <li data-zh="基于 Asio 实现 TCP 长连接异步通信，池化 io_context 提升系统并发能力；服务端按模块拆分、支持分布式部署，状态管理与认证服务解耦"
+              data-en="Implemented asynchronous TCP long-connection communication based on Asio with pooled io_context for higher concurrency; the server is modular, deployable in a distributed setup, with state management decoupled from authentication." data-page-node-id="OJrW3zAtunYy21QLEqQ2aS">基于 Asio 实现 TCP 长连接异步通信，池化 io_context 提升系统并发能力；服务端按模块拆分、支持分布式部署，状态管理与认证服务解耦</li>
         </ul>
       </div>
     </div>
@@ -510,25 +523,15 @@
       <span class="chip" data-page-node-id="8zxDhz4m4Fwf8FigpM5oMq">Python</span>
       <span class="chip" data-page-node-id="NAVgLtmHgZD0HCXGAVHEm6">Go</span>
       <span class="chip" data-page-node-id="mYyvUsKBb3WSZgJXnR3uW3">PyTorch</span>
-      <span class="chip" data-page-node-id="Ah8sUyNpizXhJdyRvFzDrh">ONNX</span>
-      <span class="chip" data-page-node-id="64flpNNT4Bntn7LzgpVGyW">LangChain</span>
-      <span class="chip" data-page-node-id="Duz2HTtTuWwuC4f5mEZx5q">gRPC</span>
-      <span class="chip" data-page-node-id="0E0BBkLjdxQdzhcAflvNXj">Protobuf</span>
-      <span class="chip" data-page-node-id="PnVfBZ7Mknq0o9u3CHxGzv">Asio</span>
-      <span class="chip" data-page-node-id="jsVENm9N9KjwaTAaugxfpb">Qt</span>
-      <span class="chip" data-page-node-id="dCyfQi4MOxifDogQ7VzLv8">Boost</span>
-      <span class="chip" data-page-node-id="P9DE0eoq74JCh5AlXX6WT7">ROS / ROS2</span>
-      <span class="chip" data-page-node-id="m8sS4XEfxHujyrTrcTHrdB">CMake / Bazel</span>
-      <span class="chip" data-page-node-id="xNhJste0HLEGJ7CTpmkshM">GDB / Valgrind</span>
-      <span class="chip" data-page-node-id="QQE6hBzBYTrEcJGK548yHd">MySQL / Redis</span>
-      <span class="chip" data-page-node-id="OT6CYQvITOjnK4sjqDnKcH">Linux</span>
-      <span class="chip" data-page-node-id="ULXWATFdofSUEshwABfsZX">Git</span>
-      <span class="chip" data-zh="多线程与并发" data-en="Multithreading" data-page-node-id="pMA69tqFX4GusPhprGJ3ST">多线程与并发</span>
-      <span class="chip" data-zh="性能调优" data-en="Performance tuning" data-page-node-id="3aHHNE1CD1C3AoZGA9ATXt">性能调优</span>
       <span class="chip" data-page-node-id="Kq7LlmGoChip1">Transformers</span>
       <span class="chip" data-page-node-id="Kq7LlmGoChip2">LoRA / SFT</span>
       <span class="chip" data-page-node-id="Kq7LlmGoChip3">GGUF</span>
       <span class="chip" data-page-node-id="Kq7LlmGoChip4">Docker</span>
+      <span class="chip" data-page-node-id="Duz2HTtTuWwuC4f5mEZx5q">gRPC</span>
+      <span class="chip" data-page-node-id="P9DE0eoq74JCh5AlXX6WT7">ROS / ROS2</span>
+      <span class="chip" data-page-node-id="OT6CYQvITOjnK4sjqDnKcH">Linux</span>
+      <span class="chip" data-zh="多线程与并发" data-en="Multithreading" data-page-node-id="pMA69tqFX4GusPhprGJ3ST">多线程与并发</span>
+      <span class="chip" data-zh="性能调优" data-en="Performance tuning" data-page-node-id="3aHHNE1CD1C3AoZGA9ATXt">性能调优</span>
     </div>
 
     <div class="skill-row" data-page-node-id="NtQekBAeRZwCF8negNGNC9">
@@ -566,8 +569,8 @@
   <section id="summary" data-page-node-id="sWkGeQn6n88xr1yD3VtJ9v">
     <h2 data-zh="自我评价" data-en="Summary" data-page-node-id="GpK4hmjget760uCNOERLEi">自我评价</h2>
     <p class="summary"
-       data-zh="具备自动驾驶模型后训练与数据挖掘的工程实践，以 C++ 与 Python 为主要开发语言、工程功底扎实；具备算法工程化、模块化重构、系统性能优化的实操能力，熟悉后端开发核心技术、主流通信协议与工程化工具，能独立完成后端模块与 Infra 系统的开发、部署与问题排查；近期把这条链路延伸到 LLM，独立完成小模型的训练、LoRA 微调、GGUF 量化到 Go 网关部署，并用困惑度、延迟与吞吐等指标做评测对比。"
-       data-en="Hands-on experience in autonomous-driving model post-training and data mining, with C++ and Python as primary languages and a solid engineering foundation. Skilled at algorithm engineering, modular refactoring and system performance optimization, familiar with core backend technologies, mainstream communication protocols and engineering tooling — able to independently develop, deploy and troubleshoot backend modules and Infra systems. Recently extended that path to LLMs: trained a small model from scratch, ran LoRA fine-tuning, quantized it to GGUF and deployed it behind a Go gateway, then measured the result with perplexity, latency and throughput." data-page-node-id="SoA5NA8CnC8Hj2K7MMTb1v">具备自动驾驶模型后训练与数据挖掘的工程实践，以 C++ 与 Python 为主要开发语言、工程功底扎实；具备算法工程化、模块化重构、系统性能优化的实操能力，熟悉后端开发核心技术、主流通信协议与工程化工具，能独立完成后端模块与 Infra 系统的开发、部署与问题排查；近期把这条链路延伸到 LLM，独立完成小模型的训练、LoRA 微调、GGUF 量化到 Go 网关部署，并用困惑度、延迟与吞吐等指标做评测对比。</p>
+       data-zh="具备自动驾驶模型后训练与数据挖掘的工程实践，以 C++ 与 Python 为主要开发语言、工程功底扎实；具备算法工程化、模块化重构、系统性能优化的实操能力，能独立完成后端模块与 Infra 系统的开发、部署与问题排查；近期把这条链路延伸到 LLM，独立完成小模型的训练、LoRA 微调、GGUF 量化到 Go 网关部署，并用困惑度、延迟与吞吐等指标做评测对比。"
+       data-en="Hands-on experience in autonomous-driving model post-training and data mining, with C++ and Python as primary languages. Skilled at algorithm engineering, modular refactoring and performance optimization; able to independently build, deploy and troubleshoot backend and Infra systems. Recently extended that path to LLMs: trained a small model from scratch, ran LoRA fine-tuning, quantized it to GGUF and deployed it behind a Go gateway, measuring perplexity, latency and throughput." data-page-node-id="SoA5NA8CnC8Hj2K7MMTb1v">具备自动驾驶模型后训练与数据挖掘的工程实践，以 C++ 与 Python 为主要开发语言、工程功底扎实；具备算法工程化、模块化重构、系统性能优化的实操能力，能独立完成后端模块与 Infra 系统的开发、部署与问题排查；近期把这条链路延伸到 LLM，独立完成小模型的训练、LoRA 微调、GGUF 量化到 Go 网关部署，并用困惑度、延迟与吞吐等指标做评测对比。</p>
   </section>
 
 </div>
