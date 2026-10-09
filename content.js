@@ -34,8 +34,8 @@ window.SITE_CONTENT = {
     en: "MSc in Artificial Intelligence student at the University of Hong Kong, trained as a systems engineer, recently working on AI Infra and Agent application development. Before that, I spent three-plus years writing C++/Python in the autonomous-driving industry, building backend and systems Infra. I tend to think like an engineer: break problems down, build modules that hold, and measure performance instead of guessing."
   },
   "hero.location": {
-    zh: "香港 · 上海",
-    en: "Hong Kong · Shanghai"
+    zh: "香港 · 上海 · 深圳",
+    en: "Hong Kong · Shanghai · Shenzhen"
   },
 
   /* ---------- 关于我 ---------- */
@@ -110,20 +110,20 @@ window.SITE_CONTENT = {
   /* ---------- 项目 ---------- */
   "projects.title": { zh: "项目", en: "Projects" },
   "p2.title": {
-    zh: "llm_go — LLM 全链路工作流：训练 → 量化 → Go 网关部署",
-    en: "llm_go — End-to-End LLM Pipeline: Train → Quantize → Deploy via a Go Gateway"
+    zh: "LlmGo — LLM 全链路工作流：训练 → 微调 → 量化 → 推理部署",
+    en: "LlmGo — End-to-End LLM Pipeline: Train → Fine-tune → Quantize → Serve"
   },
   "p2.desc": {
-    zh: "从零走通一个小型 LLaMA 架构模型的全生命周期：transformers 从头训练（BPE 分词、GQA），导出 GGUF，用 llama.cpp 量化到 Q4_K_M（体积约为 F16 的 1/4），最后由 Go（Gin）网关对外提供 OpenAI 兼容的推理 API，支持流式输出，Docker Compose 一键编排。另外内置了一个可视化节点编排界面：六个流水线节点在画布上拖拽连线、按拓扑序执行、SSE 实时回传日志。",
-    en: "A complete, hands-on lifecycle for a small LLaMA-style model: training from scratch with transformers (BPE tokenizer, GQA), export to GGUF, quantization to Q4_K_M with llama.cpp (about 1/4 of the F16 size), and an OpenAI-compatible inference API served through a Go (Gin) gateway with streaming support, orchestrated by Docker Compose. It also ships a visual node-based workflow editor: six pipeline nodes on a canvas, wired and executed in topological order with logs streamed live over SSE."
+    zh: "从零走通一个小型 LLaMA 架构模型（约 4M 参数）的全生命周期：transformers 从头训练（BPE 分词、GQA），LoRA 指令微调，自写导出器转 GGUF，并用 llama.cpp 做 imatrix 校准量化到 Q4_K_M（体积约为 F16 的 1/4）；最后由 Go（Gin）网关对外提供 OpenAI 兼容的推理 API，支持流式输出，Docker Compose 一键编排。另有一条评测与加速链路：PPL、首 token 延迟、预填充 / 解码吞吐、KV cache 量化，以及 draft + target 投机解码的接受率与加速比。内置可视化编排界面：画布拖拽与列表勾选两种方式，11 个流水线节点按拓扑序执行，SSE 实时回传日志，每个阶段自动产出 Markdown 报告。",
+    en: "A complete, hands-on lifecycle for a small LLaMA-style model (~4M parameters): training from scratch with transformers (BPE tokenizer, GQA), LoRA instruction tuning, a custom GGUF exporter, and imatrix-calibrated quantization to Q4_K_M with llama.cpp (about 1/4 of the F16 size). An OpenAI-compatible inference API is served through a Go (Gin) gateway with streaming, orchestrated by Docker Compose. Alongside it sits an evaluation and acceleration path: PPL, time-to-first-token, prefill/decode throughput, KV-cache quantization, and draft + target speculative decoding with its acceptance rate and speedup. The visual workflow editor offers canvas and list views over 11 pipeline nodes executed in topological order, streams logs live over SSE, and writes a Markdown report for every stage."
   },
   "p2.why": {
-    zh: "做这个项目是想把「模型训练」和「系统部署」两头的知识真正串起来——训练侧理解参数和数据怎么变成权重，部署侧理解权重怎么被量化、压缩、高效地对外服务。这也是我理解 LLM Infra 每个环节成本与瓶颈的方式。",
-    en: "I built it to connect the two halves I care about — model training and systems deployment: on one side, how parameters and data become weights; on the other, how those weights get quantized, compressed, and served efficiently. It's my way of understanding the cost and bottlenecks of every stage of LLM Infra."
+    zh: "做这个项目是想把「模型」和「系统」两头真正串起来——训练侧理解参数和数据怎么变成权重，部署侧理解权重怎么被量化、压缩、高效地对外服务，中间还能量出每一步的代价。这也是我理解 LLM Infra 每个环节成本与瓶颈的方式。",
+    en: "I built it to connect the two halves I care about — the model and the system: on one side, how parameters and data become weights; on the other, how those weights get quantized, compressed and served efficiently, with the cost of every step measured. It's my way of understanding the cost and bottlenecks of each stage of LLM Infra."
   },
   "p2.tags": {
-    zh: "PyTorch · transformers · llama.cpp · GGUF 量化 · Go (Gin) · Docker Compose",
-    en: "PyTorch · transformers · llama.cpp · GGUF quantization · Go (Gin) · Docker Compose"
+    zh: "PyTorch · transformers · LoRA · llama.cpp · GGUF 量化 · Go (Gin) · Docker Compose",
+    en: "PyTorch · transformers · LoRA · llama.cpp · GGUF quantization · Go (Gin) · Docker Compose"
   },
   "p1.title": {
     zh: "WeTalk — 分布式即时通讯系统",
